@@ -15,7 +15,9 @@ export default function Navbar() {
           <div>
             <ul className="flex gap-10 text-white/50">
               <li>projetos</li>
-              <li>jornada</li>
+              <li>
+                <a href="#jornada" className="transition-colors hover:text-purple-300 focus-visible:text-purple-300">jornada</a>
+              </li>
               <li>contato</li>
             </ul>
           </div>
