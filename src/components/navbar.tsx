@@ -1,3 +1,5 @@
+import AnimatedLogo from "@/components/animated-logo";
+
 export default function Navbar() {
   return (
     <div>
@@ -6,7 +8,7 @@ export default function Navbar() {
         className="flex h-12 w-full items-center justify-between px-3"
       >
           <div className="flex">
-            <span className="text-2xl font-extrabold tracking-tighter">Pedrohas</span>
+            <AnimatedLogo />
             <div className="h-1 w-1 bg-purple-600 mt-5.5 rounded" />
           </div>
           <div>
