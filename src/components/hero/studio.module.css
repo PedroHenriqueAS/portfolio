@@ -1,0 +1,545 @@
+.hero {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  width: 100%;
+  color: #f5f1ff;
+  background: #100d18;
+}
+.sceneLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.scene {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.monitorPlane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+.monitorPlane > svg {
+  display: block;
+  overflow: hidden;
+}
+.lightsOff {
+  transition: opacity 0.65s ease;
+}
+.readability {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #100d1833, transparent 50%);
+}
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  min-width: 0;
+  margin-inline: auto;
+  pointer-events: none;
+}
+.content nav {
+  pointer-events: auto;
+}
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 var(--page-gutter) max(20px, env(safe-area-inset-bottom, 0px));
+}
+.body > h1,
+.introCard {
+  pointer-events: auto;
+}
+.introCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 290px;
+  margin-top: auto;
+  padding-top: 40px;
+}
+.signature {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.introDescription {
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.conversationLink {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  border-bottom: 1px solid #a333f6;
+}
+.conversationLink:hover {
+  color: #d5adff;
+}
+.conversationLink:focus-visible {
+  outline: 2px solid #dfbdff;
+  outline-offset: 4px;
+}
+.footer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+  min-height: 60px;
+  width: 100%;
+  margin-top: 28px;
+  padding-block: 12px;
+  pointer-events: auto;
+}
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e6d5f6;
+  font-size: 14px;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 5px 10px;
+  border: 1px solid #d9bfefaa;
+  border-radius: 20px;
+  background: #100d185e;
+  color: #e6d5f6;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.controlButton[aria-pressed="true"] {
+  border-color: #c592ff;
+  background: #6f30a93d;
+  color: #f5eaff;
+}
+.controlButton:hover {
+  background: #65369c80;
+}
+.exploreButton {
+  min-height: 44px;
+  padding-block: 5px;
+  border-bottom: 1px solid #a333f6;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.exploreButton:hover,
+.exploreButton[aria-expanded="true"] {
+  color: #d5adff;
+}
+.footer button:focus-visible {
+  outline: 2px solid #dfbdff;
+  outline-offset: 4px;
+}
+.hotspot {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 24px;
+  color: #f8f1ff;
+  cursor: pointer;
+  background: transparent;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.hotspotMark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d8a7ff;
+  border-radius: 50%;
+  background: #241037df;
+  box-shadow:
+    0 0 0 5px #b168f21c,
+    0 0 22px #b168f255;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.hotspotLabel {
+  position: absolute;
+  top: calc(50% + 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  border: 1px solid #9c6eb566;
+  border-radius: 6px;
+  background: #170e23ed;
+  color: #eedbff;
+  font: 12px/1.2 monospace;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.hotspot:hover,
+.hotspot:focus-visible {
+  outline: 2px solid #c8a2ef;
+  outline-offset: -2px;
+  background: #b58aed0b;
+}
+.hotspot:hover .hotspotMark,
+.hotspot:focus-visible .hotspotMark,
+[data-exploring="true"] .hotspotMark {
+  opacity: 1;
+  transform: none;
+}
+.hotspot:hover .hotspotLabel,
+.hotspot:focus-visible .hotspotLabel,
+[data-exploring="true"] .hotspotLabel {
+  opacity: 1;
+}
+.monitor {
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 68%);
+  border-radius: 3px;
+}
+.character {
+  clip-path: polygon(
+    20% 0,
+    60% 0,
+    64% 43%,
+    100% 64%,
+    94% 80%,
+    63% 100%,
+    20% 100%,
+    0 52%
+  );
+}
+.monitor .hotspotMark {
+  transform: translateY(-8px);
+}
+.monitor .hotspotLabel {
+  top: calc(50% + 20px);
+}
+.cursor {
+  animation: cursorBlink 0.6s steps(2, start) infinite;
+}
+.typingBadge {
+  pointer-events: none;
+}
+.coffeePose {
+  transition: opacity 0.14s ease-in-out;
+}
+.steam {
+  opacity: 0.35;
+}
+.steam path {
+  animation: coffeeSteam 3s ease-in-out infinite;
+}
+.steam path + path {
+  animation-delay: -1.5s;
+}
+.catAwake {
+  animation: wakeCat 0.24s ease-out both;
+}
+.catAffection {
+  opacity: 1;
+}
+.catAffection path {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: catHeart 1.2s ease-in-out infinite;
+}
+.explorer {
+  position: fixed;
+  z-index: 60;
+  right: max(var(--page-gutter), calc((100vw - 1440px) / 2 + 40px));
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  width: min(380px, calc(100vw - 2 * var(--page-gutter)));
+  max-height: calc(
+    100dvh - var(--nav-height) - 40px - env(safe-area-inset-bottom, 0px)
+  );
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #79509f transparent;
+  padding: 20px;
+  border: 1px solid #79509f;
+  border-radius: 16px;
+  background: #171020f5;
+  box-shadow:
+    0 18px 60px #08050bcc,
+    inset 0 1px 0 #e1bdff16;
+  backdrop-filter: blur(16px);
+  animation: revealPanel 0.2s ease-out;
+}
+.explorerHeading {
+  position: sticky;
+  z-index: 2;
+  top: -20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block: 4px 8px;
+  background: #171020;
+}
+.explorerHeading span {
+  color: #b794d5;
+  font: 8px/1.5 monospace;
+  letter-spacing: 0.14em;
+}
+.explorerHeading h2 {
+  margin-top: 4px;
+  color: #f4eaff;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.explorerHeading > button {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  min-height: 44px;
+  border: 1px solid #73518b66;
+  border-radius: 50%;
+  color: #d4bae9;
+  cursor: pointer;
+}
+.explorerHeading > button:hover {
+  background: #503265;
+}
+.explorerHint {
+  margin-top: 14px;
+  color: #c2a8d6;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.mobileHint {
+  display: none;
+}
+.soundError {
+  color: #e3bbf4;
+  font-size: 12px;
+  text-align: right;
+}
+.explorerActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.explorerActions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid #76528f;
+  border-radius: 10px;
+  background: #352044;
+  color: #eddbff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.explorerActions button:hover,
+.explorerActions button[aria-pressed="true"] {
+  background: #633393;
+}
+.explorerActions button[aria-disabled="true"] {
+  color: #d8baf3;
+  border-color: #a371c8;
+  cursor: default;
+}
+.explorerActions small {
+  display: block;
+  margin-top: 1px;
+  color: #c1a1dc;
+  font-size: 9px;
+}
+.explorerStatus {
+  min-height: 36px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #67428366;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #c9b2dc;
+}
+.scenePreview {
+  display: none;
+  height: min(210px, 26dvh);
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid #705083;
+  border-radius: 8px;
+  background: #100d18;
+}
+@keyframes cursorBlink {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes revealPanel {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes coffeeSteam {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  35% {
+    opacity: 0.65;
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+}
+@keyframes wakeCat {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes catHeart {
+  50% {
+    transform: scale(1.12);
+    opacity: 0.7;
+  }
+}
+@media (min-width: 640px) {
+  .body {
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  }
+  .location {
+    font-size: 16px;
+  }
+}
+@media (max-width: 959px) {
+  .scenePreview {
+    display: block;
+  }
+  .desktopHint {
+    display: none;
+  }
+  .mobileHint {
+    display: inline;
+  }
+  .readability {
+    background:
+      linear-gradient(
+        180deg,
+        #100d1844,
+        transparent 30%,
+        #100d1866 58%,
+        #100d18d9 100%
+      ),
+      linear-gradient(90deg, #100d1877, #100d1811);
+  }
+}
+@media (max-width: 599px) {
+  .introCard {
+    padding-top: 32px;
+    max-width: 280px;
+  }
+  .introDescription {
+    font-size: 18px;
+  }
+  .signature {
+    font-size: 14px;
+  }
+  .explorer {
+    padding: 16px;
+  }
+  .explorerHeading {
+    top: -16px;
+  }
+  .explorerHeading h2 {
+    font-size: 19px;
+  }
+  .explorerHint {
+    font-size: 11px;
+  }
+}
+@media (max-height: 560px) {
+  .scenePreview {
+    display: none;
+  }
+  .explorerHint {
+    margin-top: 6px;
+  }
+  .explorerActions {
+    margin-top: 10px;
+  }
+  .explorerStatus {
+    margin-top: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightsOff,
+  .hotspot,
+  .hotspotMark,
+  .hotspotLabel,
+  .controlButton,
+  .exploreButton,
+  .explorerActions button,
+  .coffeePose {
+    transition: none;
+  }
+  .cursor,
+  .explorer,
+  .steam path,
+  .catAwake,
+  .catAffection path {
+    animation: none;
+  }
+  .steam {
+    display: none;
+  }
+}

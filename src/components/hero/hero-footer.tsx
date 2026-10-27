@@ -1,20 +1,75 @@
-import { MapPin, Sun, Volume2 } from "lucide-react";
+import { MapPin, Moon, Sun, Volume2, VolumeX } from "lucide-react";
+import type { ReactNode, RefObject } from "react";
+import styles from "./studio.module.css";
 
-export default function HeroFooter() {
+interface HeroFooterProps {
+  lightsOn: boolean;
+  soundEnabled: boolean;
+  exploring: boolean;
+  exploreRef: RefObject<HTMLButtonElement | null>;
+  onLight: () => void;
+  onSound: () => void;
+  onExplore: () => void;
+  children: ReactNode;
+}
+
+export default function HeroFooter({
+  lightsOn,
+  soundEnabled,
+  exploring,
+  exploreRef,
+  onLight,
+  onSound,
+  onExplore,
+  children,
+}: HeroFooterProps) {
   return (
-    <div className="w-full h-15 mt-5 flex items-center justify-between gap-3">
-      <p className="flex gap-1">
-        <MapPin className="color-purple-600" /> São Paulo, SP | desde 2019
+    <footer className={styles.footer}>
+      {children}
+      <p className={styles.location}>
+        <MapPin className="shrink-0 text-purple-400" /> São Paulo, SP | desde
+        2019
       </p>
-      <div className="flex gap-3">
-        <p className="border-b-1 border-purple-600">Explore o estudio</p>
-        <button className="border-2 py-1 px-2 rounded-2xl flex gap-2 text-sm">
-          <Sun size={18} /> Luz
+      <div className={styles.controls}>
+        <button
+          ref={exploreRef}
+          type="button"
+          className={styles.exploreButton}
+          aria-expanded={exploring}
+          aria-controls={exploring ? "studio-explorer" : undefined}
+          onClick={onExplore}
+        >
+          Explore o estúdio
         </button>
-        <button className="border-2 py-1 px-2 rounded-2xl flex gap-2 text-sm">
-          <Volume2 size={18} /> Som
+        <button
+          type="button"
+          className={styles.controlButton}
+          aria-label={lightsOn ? "Apagar luz" : "Acender luz"}
+          aria-pressed={lightsOn}
+          onClick={onLight}
+        >
+          {lightsOn ? (
+            <Sun size={18} aria-hidden="true" />
+          ) : (
+            <Moon size={18} aria-hidden="true" />
+          )}{" "}
+          Luz
+        </button>
+        <button
+          type="button"
+          className={styles.controlButton}
+          aria-label={soundEnabled ? "Desativar som" : "Ativar som"}
+          aria-pressed={soundEnabled}
+          onClick={onSound}
+        >
+          {soundEnabled ? (
+            <Volume2 size={18} aria-hidden="true" />
+          ) : (
+            <VolumeX size={18} aria-hidden="true" />
+          )}{" "}
+          Som
         </button>
       </div>
-    </div>
+    </footer>
   );
 }

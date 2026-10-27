@@ -1,22 +1,17 @@
-import HeroFooter from "@/components/hero/hero-footer";
-import HeroTitle from "@/components/hero/hero-title";
-import InfoCard from "@/components/hero/info-card";
+import ContactSection from "@/components/contact/contact-section";
+import HeroSection from "@/components/hero/hero-section";
 import JourneySection from "@/components/journey/journey-section";
-import Navbar from "@/components/navbar";
+import ProjectsSection from "@/components/projects/projects-section";
 
 export default function Home() {
   return (
-    <div className="flex h-dvh w-full justify-center bg-cover bg-center bg-no-repeat"
-  style={{
-    backgroundImage: "url('/hero.png')",
-  }}>
-      <div className="w-[1440px]">
-        <Navbar />
-        <HeroTitle />
-        <InfoCard />
-        <HeroFooter />
+    <main className="w-full">
+      <HeroSection />
+      <div className="mx-auto w-full min-w-0 max-w-[1440px]">
         <JourneySection />
+        <ProjectsSection />
+        <ContactSection />
       </div>
-    </div>
+    </main>
   );
 }
