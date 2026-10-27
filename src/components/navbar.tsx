@@ -1,31 +1,35 @@
 import AnimatedLogo from "@/components/animated-logo";
+import styles from "./navbar.module.css";
 
 export default function Navbar() {
   return (
     <div>
-      <div className="h-12">
-        <nav
-          aria-label="Navegação principal"
-          className="fixed inset-x-0 top-0 z-50 mx-auto flex h-12 w-full max-w-[1440px] items-center justify-between px-3"
-        >
-          <div className="flex">
+      <div className={styles.spacer}>
+        <nav aria-label="Navegação principal" className={styles.nav}>
+          <a
+            href="#inicio"
+            className={styles.brand}
+            aria-label="Pedro HAS — início"
+          >
             <AnimatedLogo />
-            <div className="h-1 w-1 bg-purple-600 mt-5.5 rounded" />
-          </div>
-          <div>
-            <ul className="flex gap-10 text-white/50">
-              <li>projetos</li>
-              <li>
-                <a href="#jornada" className="transition-colors hover:text-purple-300 focus-visible:text-purple-300">jornada</a>
-              </li>
-              <li>contato</li>
-            </ul>
-          </div>
+            <span className={styles.dot} aria-hidden="true" />
+          </a>
+          <ul className={styles.links}>
+            <li>
+              <a href="#projetos">projetos</a>
+            </li>
+            <li>
+              <a href="#jornada">jornada</a>
+            </li>
+            <li>
+              <a href="#contato">contato</a>
+            </li>
+          </ul>
         </nav>
       </div>
-      <div className="flex justify-center flex-col items-center gap-3">
-            <div className="h-0.5 w-15 bg-purple-600 rounded"></div>
-            <span className="text-white/45 text-md tracking-wider">PEDRO HAS / FRONT-END DEVELOPER</span>
+      <div className={styles.intro}>
+        <span className={styles.rule} aria-hidden="true" />
+        <span>PEDRO HAS / FRONT-END DEVELOPER</span>
       </div>
     </div>
   );

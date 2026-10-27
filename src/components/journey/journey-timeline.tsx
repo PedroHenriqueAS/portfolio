@@ -1,5 +1,6 @@
 "use client";
 
+import { formatSequenceNumber } from "@/utils/format-sequence-number";
 import { motion, useReducedMotion } from "motion/react";
 import { useId, useRef, useState, useSyncExternalStore } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
@@ -89,8 +90,14 @@ export default function JourneyTimeline() {
             <motion.div
               className="h-full w-full origin-left bg-linear-to-r from-[#c5a0ff] to-[#942bff] shadow-[0_0_12px_#a855f755] lg:origin-top lg:bg-linear-to-b"
               initial={false}
-              animate={{ scaleX: isDesktop ? 1 : progress, scaleY: isDesktop ? progress : 1 }}
-              transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
+              animate={{
+                scaleX: isDesktop ? 1 : progress,
+                scaleY: isDesktop ? progress : 1,
+              }}
+              transition={{
+                duration: shouldReduceMotion ? 0 : 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
             />
           </div>
 
@@ -101,13 +108,15 @@ export default function JourneyTimeline() {
             return (
               <button
                 key={item.id}
-                ref={(node) => { tabRefs.current[index] = node; }}
+                ref={(node) => {
+                  tabRefs.current[index] = node;
+                }}
                 id={`${id}-step-${item.id}`}
                 type="button"
                 role="tab"
                 aria-selected={isActive}
                 aria-controls={panelId}
-                aria-label={`${String(index + 1).padStart(2, "0")}. ${item.title}, ${item.period}`}
+                aria-label={`${formatSequenceNumber(index + 1)}. ${item.title}, ${item.period}`}
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => selectStep(index)}
                 onKeyDown={handleKeyDown}
@@ -118,7 +127,11 @@ export default function JourneyTimeline() {
                     aria-hidden="true"
                     layoutId={`${id}-active-step`}
                     className="absolute inset-0 rounded-xl bg-[#b078ff]/10 ring-1 ring-inset ring-[#b078ff]/5"
-                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 35 }}
+                    transition={
+                      shouldReduceMotion
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 380, damping: 35 }
+                    }
                   />
                 )}
                 <motion.span
@@ -134,13 +147,17 @@ export default function JourneyTimeline() {
                         : "border-[#716087] bg-[#100d18] text-[#c0afd8] group-hover:border-[#c5b1ff]"
                   }`}
                 >
-                  {String(index + 1).padStart(2, "0")}
+                  {formatSequenceNumber(index + 1)}
                 </motion.span>
                 <span className="relative hidden min-w-0 lg:block">
-                  <span className={`block text-base leading-snug font-semibold xl:text-lg ${isReached ? "text-[#f5f1ff]" : "text-[#bba9d6]"}`}>
+                  <span
+                    className={`block text-base leading-snug font-semibold xl:text-lg ${isReached ? "text-[#f5f1ff]" : "text-[#bba9d6]"}`}
+                  >
                     {item.title}
                   </span>
-                  <span className={`mt-2 block font-mono text-xs tracking-wider ${isActive ? "text-[#c998ff]" : "text-[#ad98ce]"}`}>
+                  <span
+                    className={`mt-2 block font-mono text-xs tracking-wider ${isActive ? "text-[#c998ff]" : "text-[#ad98ce]"}`}
+                  >
                     {item.period}
                   </span>
                 </span>

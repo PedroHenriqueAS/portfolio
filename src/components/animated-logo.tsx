@@ -30,10 +30,7 @@ export default function AnimatedLogo() {
         <span>Pedro</span>
         <span className="inline-flex overflow-y-clip">
           {Array.from(SUFFIXES[0], (_, letterIndex) => (
-            <span
-              key={letterIndex}
-              className="inline-grid [perspective:400px]"
-            >
+            <span key={letterIndex} className="inline-grid [perspective:400px]">
               {SUFFIXES.map((suffix, wordIndex) => {
                 const isActive = wordIndex === activeIndex;
 
