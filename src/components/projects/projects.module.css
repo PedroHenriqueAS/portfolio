@@ -1,0 +1,1186 @@
+.section {
+  --ink: #f5f1ff;
+  --muted: #c5b1df;
+  --border: #493061;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-width: 0;
+  padding: 64px var(--page-gutter) 80px;
+  scroll-margin-top: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 35% 70%, #63249b0c, transparent 65%), #100d18;
+}
+.sectionHeader {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.eyebrow {
+  font:
+    11px/1.6 var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.18em;
+  color: #d2a9ff;
+  text-transform: uppercase;
+}
+.heading {
+  margin: 7px 0 8px;
+  font-size: clamp(44px, 6.8vw, 92px);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+}
+.heading > span:first-child {
+  font-weight: 900;
+}
+.heading > span:last-child {
+  color: #c5a1f0;
+  font-weight: 400;
+}
+.headerBottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  color: var(--muted);
+}
+.headerBottom > p {
+  font-size: 20px;
+}
+.headerBottom > span {
+  font:
+    11px/1.5 var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.18em;
+}
+.experience {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.showcase {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  gap: 32px;
+  padding: 20px 24px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(125deg, #1d122433, #100d1844);
+}
+.cornerTopLeft,
+.cornerTopRight,
+.cornerBottomLeft,
+.cornerBottomRight {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+  border-color: #d554ff;
+  border-style: solid;
+}
+.cornerTopLeft {
+  left: 10px;
+  top: 10px;
+  border-width: 1px 0 0 1px;
+  border-radius: 4px 0 0;
+}
+.cornerTopRight {
+  right: 10px;
+  top: 10px;
+  border-width: 1px 1px 0 0;
+  border-radius: 0 4px 0 0;
+}
+.cornerBottomLeft {
+  left: 10px;
+  bottom: 10px;
+  border-width: 0 0 1px 1px;
+  border-radius: 0 0 0 4px;
+}
+.cornerBottomRight {
+  right: 10px;
+  bottom: 10px;
+  border-width: 0 1px 1px 0;
+  border-radius: 0 0 4px;
+}
+.playerStage {
+  position: relative;
+  align-self: center;
+  min-width: 0;
+  padding-bottom: 12px;
+  border-radius: 10px;
+  transition: box-shadow 0.2s;
+}
+.playerMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 3% 10px;
+  font:
+    10px/1.5 var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.15em;
+  color: #d0aceb;
+  text-transform: uppercase;
+}
+.playerMeta > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.statusLight {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #715783;
+}
+.statusLight[data-playing="true"] {
+  background: #c889ff;
+  box-shadow: 0 0 9px #c889ff;
+}
+.screenFrame {
+  position: relative;
+  z-index: 2;
+  margin: 0 3%;
+  overflow: hidden;
+  border: 1px solid #9c6cc3;
+  border-radius: 7px 7px 3px 3px;
+  background: #08070c;
+  box-shadow:
+    0 0 0 5px #17101f,
+    0 10px 32px #8b36e733;
+}
+.browserBar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 17px;
+  padding: 0 8px;
+  background: linear-gradient(#22192e, #120c1a);
+  border-bottom: 1px solid #3c284e;
+}
+.browserBar > i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e34f70;
+}
+.browserBar > i:nth-child(2) {
+  background: #e7ba60;
+}
+.browserBar > i:nth-child(3) {
+  background: #7fc689;
+}
+.browserBar > span {
+  flex: 1;
+  padding-right: 25px;
+  font: 7px monospace;
+  color: #a88cb9;
+  text-align: center;
+  letter-spacing: 0.14em;
+}
+.screenViewport {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #09080f;
+}
+.previewLayer {
+  position: absolute;
+  inset: 0;
+}
+.scanlines {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.23;
+  background: repeating-linear-gradient(transparent 0 3px, #0004 3px 4px);
+  box-shadow: inset 0 0 36px #0004;
+}
+.pauseBadge {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid #d2a9ff88;
+  background: #150b25dc;
+  color: #ecd7ff;
+  font: 10px monospace;
+  letter-spacing: 0.1em;
+}
+.loadingScreen {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: repeating-linear-gradient(
+    0deg,
+    #26133fef,
+    #26133fef 3px,
+    #170e27ed 3px,
+    #170e27ed 6px
+  );
+  color: #e6c7ff;
+  font: 12px monospace;
+  letter-spacing: 0.16em;
+}
+.loadingScreen > div {
+  height: 2px;
+  background: linear-gradient(90deg, #b15cff, #e2bdff, #b15cff);
+  transform-origin: left;
+  animation: loadTape 0.65s ease-out both;
+}
+.emptyScreen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  text-align: center;
+  background: radial-gradient(ellipse, #41265a66, #0c0812 75%);
+}
+.emptyScreen > svg {
+  width: 42px;
+  height: 42px;
+  color: #ab79d5;
+}
+.emptyScreen > strong {
+  color: #d1b0ec;
+  font:
+    700 clamp(14px, 1.8vw, 24px)/1.3 var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.1em;
+}
+.emptyScreen > span {
+  font: 9px monospace;
+  letter-spacing: 0.15em;
+  color: #8e6ca9;
+}
+.deck {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 88px;
+  margin-top: 17px;
+  padding: 12px 15px;
+  border: 2px solid #795194;
+  border-top-color: #bd8deb;
+  border-bottom-color: #33233f;
+  border-radius: 4px 4px 10px 10px;
+  background: linear-gradient(
+    110deg,
+    #322440,
+    #191321 30%,
+    #21182c 72%,
+    #3a2850
+  );
+  box-shadow:
+    inset 0 2px 1px #e1b9ff33,
+    inset 0 -6px 0 #0c0912,
+    0 9px 0 -3px #08060d,
+    0 17px 24px -12px #a450ff66;
+}
+.deck::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  height: 20px;
+  top: -20px;
+  clip-path: polygon(3% 0, 97% 0, 100% 100%, 0 100%);
+  background: linear-gradient(
+    #483059,
+    #79519d 50%,
+    #b276e3 84%,
+    #d5a5fc 88%,
+    #41274f 100%
+  );
+}
+.deck::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: -12px;
+  height: 6px;
+  border-radius: 0 0 6px 6px;
+  border-inline: 24px solid #1d1525;
+  pointer-events: none;
+}
+.deckBrand {
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3px 0 8px;
+}
+.deckBrand > span {
+  font: 9px monospace;
+  color: #d8aeff;
+  white-space: nowrap;
+}
+.deckBrand > small {
+  color: #7f668e;
+  font: 5px monospace;
+  letter-spacing: 0.16em;
+}
+.deckBrand > i {
+  width: 7px;
+  height: 7px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: #e5b5ff;
+  box-shadow:
+    0 0 0 4px #56237755,
+    0 0 12px #b154ff;
+}
+.tapeSlot {
+  position: absolute;
+  top: 15px;
+  bottom: 14px;
+  left: 23%;
+  width: 39%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #0b0810;
+  border-radius: 4px;
+  background: linear-gradient(#08060d, #1b1028);
+  box-shadow:
+    0 1px 0 #7e5c96,
+    inset 0 5px 8px #000;
+}
+.slotLabel {
+  font: 8px monospace;
+  letter-spacing: 0.12em;
+  color: #74578c;
+}
+.insertedTape {
+  position: absolute;
+  top: -9px;
+  width: 100%;
+  aspect-ratio: 3.5;
+  container-type: inline-size;
+  filter: drop-shadow(0 8px 5px #000b);
+}
+/* Keep perspective on the inner face so the insertion animation can move the whole tape. */
+.insertedTapeSurface {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%) perspective(160cqw) rotateX(58deg);
+  transform-style: preserve-3d;
+}
+.insertedTapeSurface::after {
+  content: "";
+  position: absolute;
+  top: 98%;
+  left: 1%;
+  right: 1%;
+  height: clamp(5px, 3cqw, 10px);
+  border: 1px solid #32233f;
+  border-top-color: #5e4275;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(#291c38, #0c0812);
+  transform-origin: center top;
+  transform: rotateX(-90deg);
+}
+.insertedTapeSurface .cassette {
+  filter: none;
+}
+.deckControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.digitalDisplay {
+  display: grid;
+  place-items: center;
+  min-width: 79px;
+  min-height: 37px;
+  padding: 7px;
+  margin-right: 2px;
+  color: #bf66ff;
+  background: #0d0716;
+  border: 1px solid #694180;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 8px #000;
+  font:
+    12px/1.2 var(--font-geist-mono),
+    monospace;
+  text-shadow: 0 0 8px #b13bffbb;
+}
+.deckControls > button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  color: #dab2ff;
+  border: 1px solid #8c5cb0;
+  border-bottom: 4px solid #08060d;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #412656, #191022 75%);
+  box-shadow:
+    inset 0 1px 2px #e1b2ff33,
+    0 0 0 2px #09070e;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.deckControls > button:hover:not(:disabled) {
+  color: #fff;
+  background: #6b3199;
+}
+.deckControls > button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.deckControls > button > svg {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 0 5px #a43aff);
+}
+.ejectIcon {
+  transform: rotate(-90deg);
+}
+.dropActive {
+  box-shadow:
+    0 0 0 2px #be76ff,
+    0 0 40px #ae3bff44;
+}
+.dropPrompt {
+  pointer-events: none;
+  position: absolute;
+  z-index: 10;
+  inset: 25px 3% 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 2px dashed #bd83f2;
+  border-radius: 8px;
+  background: #150b25bd;
+  color: #e8ccff;
+  backdrop-filter: blur(3px);
+  font:
+    11px/1.5 var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.13em;
+}
+.dropPrompt > svg {
+  width: 42px;
+  height: 42px;
+}
+.dropActive .dropPrompt {
+  background: #34144fdc;
+  border-color: #efc9ff;
+  color: #fff;
+}
+.detailsWrapper {
+  align-self: center;
+  min-width: 0;
+  padding: 16px 0 24px;
+}
+.details {
+  min-width: 0;
+}
+.details > h3,
+.description,
+.features li > div,
+.technologies li {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.details > h3 {
+  margin: 10px 0;
+  font-size: clamp(38px, 5vw, 66px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+.description {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #ddc7f1;
+}
+.features {
+  display: grid;
+  gap: 22px;
+  margin-top: 23px;
+  padding: 23px 0;
+  border-block: 1px solid var(--border);
+  list-style: none;
+}
+.features > li {
+  display: flex;
+  gap: 19px;
+  align-items: center;
+}
+.features > li > svg {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  color: #d5a7ef;
+  stroke-width: 1.4;
+}
+.features h4 {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.features p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.technologies {
+  margin-top: 12px;
+}
+.technologies > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 11px;
+  list-style: none;
+}
+.technologies li {
+  border: 1px solid #b28ccb;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #e0cdeb;
+  box-shadow: inset 0 1px 1px #cba4e51f;
+}
+.projectLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+.projectLinks > a,
+.unavailableLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 45px;
+  padding: 10px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.primaryLink {
+  background: linear-gradient(120deg, #9224ff, #6824ec);
+  border: 1px solid #a155ff;
+  color: #fff;
+  transition: filter 0.2s;
+}
+.primaryLink:hover {
+  filter: brightness(1.2);
+}
+.secondaryLink {
+  border: 1px solid #a37acc;
+  color: #f4e9ff;
+  transition: background 0.2s;
+}
+.secondaryLink:hover {
+  background: #b181eb1a;
+}
+.unavailableLink {
+  border: 1px solid #745b8a66;
+  color: #a38ab8;
+  background: #53336b10;
+  font-size: 12px;
+}
+.emptyDetails {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+.emptyDetails > svg {
+  width: 40px;
+  height: 40px;
+  color: #b984e2;
+  stroke-width: 1;
+}
+.emptyDetails > h3 {
+  font-size: clamp(32px, 3.5vw, 48px);
+  line-height: 1.13;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+}
+.emptyDetails > p:last-child {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.shelfHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 8px 0;
+  gap: 12px;
+}
+.shelfHeading > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.shelfHeading > div > span {
+  font: 10px monospace;
+  letter-spacing: 0.15em;
+  color: #cda7f2;
+  margin-right: 3px;
+}
+.shelfHeading button {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #9f79c3;
+  border-radius: 9px;
+  background: #160f20;
+  color: #d5b7f0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.shelfHeading button:hover {
+  background: #4d2b67;
+}
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 270px));
+  justify-content: center;
+  gap: clamp(18px, 3.5vw, 48px);
+  padding: 14px 24px 24px;
+}
+.tapeButton {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  align-self: center;
+  border: 0;
+  padding: 0;
+  border-radius: 12px;
+  background: none;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  -webkit-user-select: none;
+  transition:
+    transform 0.2s,
+    filter 0.2s;
+}
+.tapeButton:not(.tapeLoaded):hover {
+  transform: translateY(-7px) rotate(-2deg);
+  filter: drop-shadow(0 8px 12px #8b3ada44);
+}
+.tapeButton:not(.tapeLoaded):active {
+  cursor: grabbing;
+}
+.cassette {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 4px 4px #0007);
+}
+.spinningReel {
+  animation: reelTurn 5s linear infinite;
+}
+.tapeLoaded {
+  cursor: pointer;
+  outline: 1px dashed #a45fda;
+  outline-offset: -4px;
+}
+.tapeLoaded > svg {
+  opacity: 0.2;
+}
+.loadedOverlay {
+  position: absolute;
+  inset: 15% 6%;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-content: center;
+  justify-content: center;
+  gap: 2px 12px;
+  padding: 8px;
+  border-radius: 5px;
+  background: radial-gradient(ellipse, #160c26d9, #160c2655 80%);
+  text-align: left;
+}
+.loadedOverlay > span {
+  grid-row: 1 / 3;
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  border: 1px solid #c445ff;
+  color: #c96bff;
+}
+.loadedOverlay > strong {
+  align-self: end;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.loadedOverlay > small {
+  align-self: start;
+  margin-top: 3px;
+  color: #bc8ce6;
+  font: 7px/1.4 monospace;
+  letter-spacing: 0.1em;
+}
+.tapeDragging {
+  opacity: 0.2;
+}
+.dragGhost {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform;
+  filter: drop-shadow(0 18px 20px #0008) drop-shadow(0 0 14px #c573fa44);
+}
+.shelfFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 5px;
+}
+.touchInstructions {
+  display: none;
+}
+.shelfFooter > p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #c5acd9;
+}
+.pagination {
+  display: flex;
+  gap: 10px;
+}
+.pagination > span {
+  width: 29px;
+  height: 6px;
+  border-radius: 10px;
+  background: #3b2352;
+  transition:
+    width 0.25s,
+    background 0.25s;
+}
+.pagination > span[data-active="true"] {
+  width: 40px;
+  background: #932fff;
+  box-shadow: 0 0 10px #9b3aff33;
+}
+.collectionLabel {
+  color: #886d9c;
+  font: 8px monospace;
+  letter-spacing: 0.15em;
+}
+.section button:focus-visible,
+.section a:focus-visible {
+  outline: 2px solid #e0b1ff;
+  outline-offset: 5px;
+}
+
+@keyframes reelTurn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loadTape {
+  from {
+    transform: scaleX(0.05);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 1199px) {
+  .showcase {
+    gap: 24px;
+    padding-inline: 18px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  }
+  .deck {
+    height: 77px;
+    padding: 10px;
+  }
+  .deckControls {
+    gap: 6px;
+  }
+  .digitalDisplay {
+    min-width: 58px;
+    min-height: 32px;
+    font-size: 9px;
+  }
+  .deckControls > button > svg {
+    width: 16px;
+    height: 16px;
+  }
+  .tapeSlot {
+    left: 22%;
+    width: 36%;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .features {
+    margin-top: 18px;
+    padding-block: 18px;
+    gap: 18px;
+  }
+  .features > li {
+    gap: 12px;
+  }
+  .features h4 {
+    font-size: 14px;
+  }
+  .features p {
+    font-size: 12px;
+  }
+  .projectLinks {
+    gap: 8px;
+  }
+  .unavailableLink {
+    font-size: 10px;
+  }
+  .collectionLabel {
+    display: none;
+  }
+}
+@media (max-width: 959px) {
+  .section {
+    padding-top: 48px;
+  }
+  .showcase {
+    display: contents;
+  }
+  .showcase > [class*="corner"] {
+    display: none;
+  }
+  .playerStage {
+    order: 1;
+    width: 100%;
+    padding: 16px 12px 25px;
+    border: 1px solid var(--border);
+    background: #170f2055;
+  }
+  .deck {
+    height: 88px;
+    padding: 12px 16px;
+  }
+  .tapeSlot {
+    width: 39%;
+    left: 23%;
+  }
+  .deckControls > button > svg {
+    width: 20px;
+    height: 20px;
+  }
+  .digitalDisplay {
+    min-width: 75px;
+    height: 38px;
+    font-size: 12px;
+  }
+  .shelfHeading {
+    order: 2;
+    margin-top: 22px;
+  }
+  .shelf {
+    order: 3;
+    padding-inline: 0;
+    gap: 20px;
+  }
+  .shelfFooter {
+    order: 4;
+    flex-wrap: wrap;
+  }
+  .detailsWrapper {
+    order: 5;
+    width: 100%;
+    margin-top: 26px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .details > h3 {
+    font-size: 48px;
+  }
+  .features {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .features h4 {
+    font-size: 16px;
+  }
+  .features p {
+    font-size: 13px;
+  }
+  .projectLinks {
+    max-width: 420px;
+  }
+  .unavailableLink {
+    font-size: 12px;
+  }
+  .emptyDetails {
+    min-height: 260px;
+  }
+  .dropPrompt {
+    inset: 38px 5% 28px;
+  }
+}
+@media (max-width: 599px) {
+  .section {
+    padding: 40px var(--page-gutter) 60px;
+  }
+  .heading {
+    font-size: clamp(40px, 8.7vw, 54px);
+    line-height: 1.05;
+  }
+  .heading > span {
+    display: block;
+  }
+  .headerBottom > p {
+    font-size: 16px;
+  }
+  .headerBottom > span {
+    font-size: 9px;
+  }
+  .eyebrow {
+    font-size: 9px;
+  }
+  .playerStage {
+    padding: 12px 7px 20px;
+  }
+  .playerMeta {
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .browserBar {
+    height: 13px;
+  }
+  .browserBar > span {
+    font-size: 5px;
+  }
+  .screenFrame {
+    border-radius: 4px;
+    box-shadow:
+      0 0 0 3px #17101f,
+      0 6px 20px #8b36e733;
+  }
+  .deck {
+    height: 90px;
+    margin-top: 10px;
+    padding: 10px 8px;
+    gap: 6px;
+    border-width: 1px;
+  }
+  .deck::before {
+    height: 12px;
+    top: -12px;
+    left: -1px;
+    right: -1px;
+  }
+  .deckBrand {
+    padding: 2px 0 6px;
+  }
+  .deckBrand > span {
+    font-size: 6px;
+  }
+  .deckBrand > small {
+    font-size: 4px;
+  }
+  .deckBrand > i {
+    width: 5px;
+    height: 5px;
+  }
+  .tapeSlot {
+    left: 20%;
+    width: 34%;
+    top: 20px;
+    bottom: 18px;
+    border-width: 2px;
+  }
+  .slotLabel {
+    font-size: 5px;
+  }
+  .insertedTape {
+    top: -4px;
+  }
+  .deckControls {
+    position: relative;
+    gap: 6px;
+    padding-top: 18px;
+  }
+  .digitalDisplay {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    min-width: 57px;
+    width: 100%;
+    min-height: 16px;
+    height: 16px;
+    font-size: 9px;
+    padding: 1px 2px;
+  }
+  .deckControls > button {
+    border-bottom-width: 3px;
+  }
+  .deckControls > button > svg {
+    width: 17px;
+    height: 17px;
+  }
+  .emptyScreen {
+    gap: 10px;
+  }
+  .emptyScreen > svg {
+    width: 24px;
+    height: 24px;
+  }
+  .emptyScreen > strong {
+    font-size: 12px;
+  }
+  .emptyScreen > span {
+    font-size: 6px;
+  }
+  .loadingScreen {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+  .tapeButton:not(.tapeLoaded):hover {
+    transform: none;
+  }
+  .shelfHeading {
+    margin-inline: 0;
+  }
+  .shelfHeading > div {
+    gap: 8px;
+  }
+  .shelfHeading > div > span {
+    font-size: 9px;
+  }
+  .shelfFooter {
+    justify-content: center;
+    gap: 14px;
+    padding-top: 9px;
+    text-align: center;
+  }
+  .shelfFooter > p {
+    font-size: 11px;
+  }
+  .detailsWrapper {
+    padding: 22px;
+  }
+  .details > h3 {
+    font-size: 42px;
+  }
+  .description {
+    font-size: 15px;
+  }
+  .features {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .features h4 {
+    font-size: 15px;
+  }
+  .features p {
+    font-size: 12px;
+  }
+  .technologies li {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  .projectLinks {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin-top: 20px;
+  }
+  .dropPrompt {
+    inset: 30px 5% 23px;
+    font-size: 8px;
+    gap: 8px;
+  }
+  .dropPrompt > svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+@media (max-width: 767px) {
+  .shelf {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #604078 transparent;
+    gap: 18px;
+    margin-inline: -6px;
+    padding: 12px 8px 18px;
+  }
+  .tapeButton {
+    flex: 0 0 70%;
+    max-width: 280px;
+    scroll-snap-align: center;
+    touch-action: pan-x;
+  }
+  .pointerInstructions {
+    display: none;
+  }
+  .touchInstructions {
+    display: inline;
+  }
+}
+@media (hover: none) {
+  .tapeButton:not(.tapeLoaded):hover {
+    transform: none;
+    filter: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinningReel,
+  .loadingScreen > div {
+    animation: none;
+  }
+  .section *,
+  .section *::before,
+  .section *::after {
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .tapeButton:not(.tapeLoaded):hover {
+    transform: none;
+  }
+}

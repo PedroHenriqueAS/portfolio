@@ -1,0 +1,447 @@
+.previewImage {
+  object-fit: cover;
+}
+.placeholder {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 8%;
+  background: radial-gradient(ellipse at top right, #533575, #171023 70%);
+  color: #c5b1ff;
+  overflow-wrap: anywhere;
+}
+.placeholder strong {
+  color: #f5f1ff;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+/* Previews are illustrative layouts; previewImage replaces them with a real capture. */
+.preview {
+  width: 100%;
+  height: 100%;
+  container-type: inline-size;
+}
+.preview > div {
+  height: 100%;
+}
+.storePreview {
+  height: 100%;
+  overflow: hidden;
+  background: #111114;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+.storeNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8%;
+  padding: 0 6%;
+  background: #080809;
+  border-bottom: 1px solid #ffffff12;
+}
+.storeNav > strong {
+  font-size: 2.5cqw;
+  letter-spacing: -0.1cqw;
+}
+.storeNav > strong > span {
+  color: #ea273c;
+  font-size: 1.2cqw;
+}
+.storeNav > span {
+  font-size: 1.1cqw;
+}
+.storeNav > svg {
+  width: 2cqw;
+  height: 2cqw;
+}
+.storeHero {
+  position: relative;
+  height: 64%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 75% 45%, #62566e55, transparent 60%),
+    repeating-linear-gradient(110deg, #63566a18 0 1px, transparent 1px 60px),
+    linear-gradient(130deg, #1e1925, #09090c 50%, #332b3c);
+}
+.storeHero::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    #fff0 0 34px,
+    #ddd1 35px,
+    #fff0 36px
+  );
+  opacity: 0.2;
+}
+.storeCopy {
+  position: absolute;
+  z-index: 2;
+  top: 8%;
+  left: 7%;
+}
+.storeCopy > small {
+  font: 0.8cqw monospace;
+  letter-spacing: 0.2cqw;
+  color: #e7e1eb;
+}
+.storeCopy > strong {
+  display: block;
+  margin: 1.5cqw 0 0.5cqw;
+  font-size: 5.6cqw;
+  line-height: 0.92;
+  font-weight: 900;
+  letter-spacing: -0.24cqw;
+}
+.storeCopy > span {
+  color: #ec273f;
+  font-size: 2.2cqw;
+  font-weight: 700;
+}
+.storeCopy > p {
+  margin-top: 0.8cqw;
+  font-size: 1.1cqw;
+  line-height: 1.3;
+}
+.storeCopy > b {
+  display: inline-block;
+  margin-top: 1.5cqw;
+  padding: 0.8cqw 2.3cqw;
+  border-radius: 0.4cqw;
+  background: #fff;
+  color: #151218;
+  font-size: 1cqw;
+}
+.blackShirt,
+.whiteShirt {
+  position: absolute;
+  filter: drop-shadow(0 10px 12px #000b);
+}
+.blackShirt {
+  z-index: 1;
+  width: 49%;
+  left: 34%;
+  top: -4%;
+  transform: rotate(-9deg);
+}
+.whiteShirt {
+  width: 40%;
+  right: -1%;
+  top: -8%;
+  transform: rotate(12deg);
+}
+.storeEdition {
+  position: absolute;
+  z-index: 3;
+  right: 2%;
+  bottom: 12%;
+  font: 0.85cqw monospace;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.2cqw;
+  color: #aba3b1;
+}
+.storeProducts {
+  height: 28%;
+  padding: 1cqw 7% 0;
+  background: #0a0a0d;
+}
+.storeProducts > strong {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5cqw;
+}
+.storeProducts > strong > span {
+  font-size: 1cqw;
+  font-weight: 400;
+}
+.storeProducts > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4cqw;
+  margin-top: 1cqw;
+}
+.storeProducts > div > div {
+  position: relative;
+  height: 16cqw;
+  overflow: hidden;
+  border-radius: 0.7cqw;
+  background: linear-gradient(130deg, #24242b, #121215);
+}
+.storeProducts svg {
+  width: 78%;
+  margin: -1cqw auto 0;
+}
+.storeProducts span {
+  position: absolute;
+  bottom: 1cqw;
+  left: 1cqw;
+  font-size: 0.9cqw;
+}
+.storeProducts > strong > span {
+  position: static;
+}
+.pokedexPreview {
+  height: 100%;
+  overflow: hidden;
+  padding: 2.5cqw 5cqw;
+  color: #272437;
+  background: #f4f0f0;
+  font-family: Arial, sans-serif;
+}
+.pokedexNav {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+}
+.pokedexNav > strong {
+  font-size: 2.3cqw;
+  letter-spacing: -0.1cqw;
+}
+.pokedexNav > span:last-child {
+  margin-left: auto;
+  font-size: 0.75cqw;
+  letter-spacing: 0.13cqw;
+  color: #7e7485;
+}
+.pokeball {
+  display: inline-block;
+  position: relative;
+  width: 3cqw;
+  height: 3cqw;
+  border: 0.25cqw solid #302c37;
+  border-radius: 50%;
+  background: linear-gradient(#db5b6c 0 44%, #302c37 44% 56%, #fff 56%);
+}
+.pokeball::after {
+  position: absolute;
+  content: "";
+  inset: 31%;
+  border: 0.2cqw solid #302c37;
+  border-radius: 50%;
+  background: #fff;
+}
+.pokedexHeading {
+  position: relative;
+  margin-top: 2.4cqw;
+}
+.pokedexHeading > small {
+  color: #a74766;
+  font-size: 0.8cqw;
+  font-weight: 700;
+  letter-spacing: 0.15cqw;
+}
+.pokedexHeading > strong {
+  display: block;
+  margin: 0.6cqw 0;
+  font-size: 4.1cqw;
+  line-height: 1.05;
+  letter-spacing: -0.18cqw;
+}
+.pokedexHeading > span {
+  font-size: 1.2cqw;
+  color: #7c7181;
+}
+.pokedexSearch {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+  margin-top: 1.8cqw;
+  padding: 1cqw 1.3cqw;
+  border: 1px solid #e1d9e0;
+  border-radius: 1cqw;
+  background: #fff;
+}
+.pokedexSearch > svg {
+  width: 1.5cqw;
+  height: 1.5cqw;
+  color: #8a7c93;
+}
+.pokedexSearch > span {
+  font-size: 1cqw;
+  color: #8a7c93;
+}
+.pokedexSearch > b {
+  margin-left: auto;
+  padding: 0.7cqw 2cqw;
+  border-radius: 0.5cqw;
+  background: #c95870;
+  color: #fff;
+  font-size: 1cqw;
+}
+.pokemonCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6cqw;
+  margin-top: 2cqw;
+}
+.pokemonCards > div {
+  position: relative;
+  min-height: 17cqw;
+  padding: 1.5cqw;
+  border-radius: 1.5cqw;
+}
+.pokemonCards small {
+  position: absolute;
+  right: 1.5cqw;
+  top: 1.5cqw;
+  font: 0.85cqw monospace;
+  opacity: 0.5;
+}
+.pokemonCards svg {
+  display: block;
+  width: 7cqw;
+  height: 7cqw;
+  margin: 0.5cqw auto 1cqw;
+  stroke-width: 1.3;
+  opacity: 0.55;
+}
+.pokemonCards strong {
+  display: block;
+  font-size: 1.5cqw;
+}
+.pokemonCards span {
+  font-size: 0.65cqw;
+  letter-spacing: 0.1cqw;
+  opacity: 0.65;
+}
+.kanbanPreview {
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  color: #e1ddf0;
+  background: #16151f;
+  font-family: Arial, sans-serif;
+}
+.kanbanPreview > aside {
+  display: flex;
+  flex-direction: column;
+  gap: 2cqw;
+  flex: 0 0 21%;
+  padding: 3cqw 1.8cqw;
+  border-right: 1px solid #ffffff0a;
+  background: #111018;
+}
+.kanbanPreview > aside > strong {
+  margin-bottom: 3cqw;
+  font-size: 2.1cqw;
+  letter-spacing: -0.1cqw;
+}
+.kanbanPreview > aside > span {
+  color: #88839c;
+  font-size: 1cqw;
+}
+.kanbanPreview > aside > span:first-of-type {
+  font-size: 0.7cqw;
+  letter-spacing: 0.1cqw;
+}
+.kanbanPreview > aside > b {
+  margin-inline: -0.6cqw;
+  padding: 1cqw 0.6cqw;
+  border-radius: 0.5cqw;
+  color: #cdb9f6;
+  background: #a078db1f;
+  font-size: 1cqw;
+}
+.kanbanPreview > aside > i {
+  margin-top: auto;
+  font:
+    1cqw Arial,
+    sans-serif;
+  color: #b29bd0;
+}
+.kanbanMain {
+  flex: 1;
+  min-width: 0;
+  padding: 2.8cqw 2.4cqw;
+}
+.kanbanMain > header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3.4cqw;
+  color: #77718c;
+}
+.kanbanMain > header > small {
+  font-size: 0.7cqw;
+  letter-spacing: 0.12cqw;
+}
+.kanbanMain > header > span {
+  font-size: 0.8cqw;
+  letter-spacing: 0.1cqw;
+}
+.kanbanMain > strong {
+  font-size: 3cqw;
+  font-weight: 700;
+  letter-spacing: -0.12cqw;
+}
+.kanbanMain > p {
+  margin-top: 0.7cqw;
+  font-size: 1cqw;
+  color: #8e879f;
+}
+.kanbanColumns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4cqw;
+  margin-top: 3cqw;
+}
+.kanbanColumns > div > h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.6cqw;
+  margin-bottom: 1.2cqw;
+  font-size: 1.1cqw;
+}
+.kanbanColumns h4 > i {
+  width: 0.6cqw;
+  height: 0.6cqw;
+  border-radius: 50%;
+}
+.kanbanColumns h4 > span {
+  margin-left: auto;
+  font-size: 0.85cqw;
+  color: #8b819a;
+}
+.kanbanColumns > div > div {
+  padding: 1.3cqw;
+  margin-bottom: 1.2cqw;
+  border-radius: 0.8cqw;
+  border: 1px solid #ffffff08;
+  background: #22202e;
+}
+.kanbanColumns small {
+  font-size: 0.6cqw;
+  letter-spacing: 0.04cqw;
+}
+.kanbanColumns strong {
+  display: block;
+  margin-top: 0.6cqw;
+  font-size: 1.05cqw;
+}
+.kanbanColumns p {
+  margin-top: 0.5cqw;
+  font-size: 0.75cqw;
+  color: #9890a7;
+}
+.kanbanColumns footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.8cqw;
+  font-size: 0.7cqw;
+  color: #9e94af;
+}
+.kanbanColumns footer > b {
+  display: grid;
+  place-items: center;
+  width: 1.8cqw;
+  height: 1.8cqw;
+  border-radius: 50%;
+  font-size: 0.55cqw;
+  background: #4b365f;
+  color: #c9b5e0;
+}
