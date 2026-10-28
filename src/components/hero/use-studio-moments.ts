@@ -11,9 +11,6 @@ import {
 } from "./studio-data";
 import { preloadImage } from "@/utils/preload-image";
 import type { StudioMessage } from "@/i18n/resources";
-
-// Separate timelines let the cat react during a coffee break. Tokens also
-// invalidate a pending image decode when the visitor leaves or starts typing.
 export function useStudioMoments({
   theme,
   reducedMotion,

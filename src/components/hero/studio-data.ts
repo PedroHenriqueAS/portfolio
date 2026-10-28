@@ -28,9 +28,6 @@ export const STUDIO_TARGETS = {
   coffee: { x: 1162, y: 632, width: 76, height: 76 },
   cat: { x: 606, y: 660, width: 174, height: 104 },
 };
-
-// Neutral pixels leave the scene untouched. Soft green lobes move only the
-// fingertips and wrist, in opposite directions, without duplicating the arm.
 export const TYPING_DISPLACEMENT = `data:image/svg+xml,${encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
   <defs>

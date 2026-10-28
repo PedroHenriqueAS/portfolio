@@ -21,7 +21,6 @@
   font-size: clamp(1.5rem, 4vw, 3rem);
   line-height: 1.1;
 }
-/* Previews are illustrative layouts; previewImage replaces them with a real capture. */
 .preview {
   width: 100%;
   height: 100%;

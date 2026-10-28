@@ -1,5 +1,3 @@
-// Inner display corners measured on the original 1536 × 1024 illustration,
-// clockwise from the top left. Keep the projection and clipping in sync.
 export const MONITOR_CORNERS = [
   { x: 1018, y: 444 },
   { x: 1245, y: 483 },
@@ -22,9 +20,6 @@ function monitorProjection() {
   const determinant = dx1 * dy2 - dx2 * dy1;
   const perspectiveX = (dx3 * dy2 - dx2 * dy3) / determinant;
   const perspectiveY = (dx1 * dy3 - dx3 * dy1) / determinant;
-
-  // A projective transform maps every point in the rectangular UI onto the
-  // display plane, including its bottom edge and the changing text scale.
   return [
     (topRight.x - topLeft.x + perspectiveX * topRight.x) / width,
     (topRight.y - topLeft.y + perspectiveX * topRight.y) / width,

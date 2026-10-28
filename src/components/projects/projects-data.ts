@@ -32,8 +32,6 @@ type ProjectDefinition = Pick<
 > & {
   featureIcons: readonly PortfolioProject["features"][number]["icon"][];
 };
-
-// Links and artwork stay here; localized copy lives in i18n/locales.
 const projectDefinitions = [
   {
     id: "formlab",

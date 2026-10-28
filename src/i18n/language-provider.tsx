@@ -37,7 +37,7 @@ export default function LanguageProvider({
       try {
         localStorage.setItem(STORAGE_KEY, language);
       } catch {
-        // The selector still works when browser storage is unavailable.
+        return;
       }
     };
 
@@ -45,7 +45,7 @@ export default function LanguageProvider({
     try {
       savedLanguage = localStorage.getItem(STORAGE_KEY);
     } catch {
-      // Keep the server's Portuguese default when storage is unavailable.
+      savedLanguage = null;
     }
     i18n.on("languageChanged", syncLanguage);
     if (savedLanguage === "en" || savedLanguage === "pt") {

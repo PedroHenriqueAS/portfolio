@@ -42,7 +42,6 @@ export default function StudioDaylight({
           />
         </mask>
         <clipPath id={`${id}-sky`}>
-          {/* Upper right pane: keep both celestial bodies behind the frame. */}
           <path d="M644 357Q682 370 708 401L708 464L644 475Z" />
         </clipPath>
         <radialGradient id={`${id}-sun-glow`}>
@@ -81,7 +80,6 @@ export default function StudioDaylight({
           />
         </mask>
       </defs>
-      {/* Only this small patch is replaced; the original nighttime room stays intact. */}
       <image
         href="/studio/window-night.webp"
         width="1536"

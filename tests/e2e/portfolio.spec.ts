@@ -90,7 +90,6 @@ test("ejetar durante o carregamento cancela a reprodução pendente", async ({
     "loading",
   );
   await page.getByRole("button", { name: "Ejetar fita" }).click();
-  // Wait past the load delay to catch a stale timer starting the ejected tape.
   await page.waitForTimeout(800);
   await expect(page.locator("[data-playback]")).toHaveAttribute(
     "data-playback",
