@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   createStudioAudio,
@@ -11,13 +12,14 @@ import {
 } from "./studio-audio";
 
 export function useStudioSound() {
+  const { t } = useTranslation();
   const engine = useRef<StudioAudio | null>(null);
   const enabled = useRef(false);
   const mounted = useRef(true);
   const activation = useRef(0);
   const invalidateActivation = useCallback(() => ++activation.current, []);
   const [soundEnabled, setSoundEnabled] = useState(false);
-  const [soundError, setSoundError] = useState("");
+  const [soundError, setSoundError] = useState(false);
 
   const stopSounds = useCallback(() => {
     if (engine.current) stopStudioAudio(engine.current);
@@ -52,7 +54,7 @@ export function useStudioSound() {
   const toggleSound = useCallback(async () => {
     const request = invalidateActivation();
     enabled.current = !enabled.current;
-    setSoundError("");
+    setSoundError(false);
     if (!enabled.current) {
       stopSounds();
       if (engine.current)
@@ -82,9 +84,15 @@ export function useStudioSound() {
       if (!mounted.current || request !== activation.current) return;
       enabled.current = false;
       setSoundEnabled(false);
-      setSoundError("Não foi possível ativar o som. Tente novamente.");
+      setSoundError(true);
     }
   }, [playSound, stopSounds, invalidateActivation]);
 
-  return { soundEnabled, soundError, toggleSound, playSound, stopSounds };
+  return {
+    soundEnabled,
+    soundError: soundError ? t("studio.messages.soundError") : "",
+    toggleSound,
+    playSound,
+    stopSounds,
+  };
 }

@@ -10,8 +10,8 @@ export default function Home() {
       <div className="mx-auto w-full min-w-0 max-w-[1440px]">
         <JourneySection />
         <ProjectsSection />
-        <ContactSection />
       </div>
+      <ContactSection />
     </main>
   );
 }

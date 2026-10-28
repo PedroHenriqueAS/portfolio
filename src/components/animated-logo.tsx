@@ -37,7 +37,7 @@ export default function AnimatedLogo() {
                 return (
                   <motion.span
                     key={suffix}
-                    className={`[grid-area:1/1] ${wordIndex === 1 ? "text-purple-300" : ""}`}
+                    className={`[grid-area:1/1] ${wordIndex === 1 ? "text-[var(--logo-accent,var(--accent))]" : ""}`}
                     initial={false}
                     animate={{
                       y: isActive ? "0%" : wordIndex === 0 ? "-110%" : "110%",

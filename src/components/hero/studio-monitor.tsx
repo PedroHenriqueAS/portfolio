@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
+
 import { STUDIO_CODE, type StudioScreen } from "./studio-data";
 import { MONITOR_SIZE } from "./monitor-perspective";
 import styles from "./studio.module.css";
@@ -13,6 +17,7 @@ export default function StudioMonitor({
   progress,
   typing,
 }: StudioMonitorProps) {
+  const { t } = useTranslation();
   const codeLines = STUDIO_CODE.slice(0, progress).split("\n");
   return (
     <svg
@@ -73,7 +78,7 @@ export default function StudioMonitor({
           )}
           <path d="M0 137H224V160H0Z" fill="#36204d" />
           <text x="9" y="145" fill="#dac6ed" fontSize="5">
-            {typing ? "● digitando..." : "✓ pronto para criar"}
+            {typing ? t("studio.monitorTyping") : t("studio.monitorReady")}
           </text>
         </>
       )}
@@ -83,14 +88,14 @@ export default function StudioMonitor({
             pedro<tspan fill="#ba78ff">.dev</tspan>
           </text>
           <text x="14" y="54" fontSize="13" fontWeight="700" fill="#f5efff">
-            Ideias que
+            {t("studio.previewTitle")}
           </text>
           <text x="14" y="70" fontSize="13" fontStyle="italic" fill="#c6a0ed">
-            ganham vida.
+            {t("studio.previewAccent")}
           </text>
           <rect x="14" y="81" width="72" height="15" rx="4" fill="#852beb" />
           <text x="21" y="91" fontSize="5.5" fill="white">
-            Explorar projetos ↗
+            {t("studio.previewProjects")}
           </text>
           {[14, 80, 146].map((x, index) => (
             <g key={x}>
@@ -118,13 +123,13 @@ export default function StudioMonitor({
           {[
             "$ npm run create",
             "",
-            "✓ ideias conectadas",
-            "✓ detalhes refinados",
-            "✓ experiência pronta",
+            t("studio.terminalIdeas"),
+            t("studio.terminalDetails"),
+            t("studio.terminalReady"),
             "",
-            "Built with curiosity.",
+            t("studio.terminalCuriosity"),
             "",
-            "$ vamos criar algo? _",
+            t("studio.terminalPrompt"),
           ].map((line, index) => (
             <text
               key={index}

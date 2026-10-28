@@ -1,25 +1,24 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+"use client";
+
+import { useTranslation } from "react-i18next";
+
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import styles from "./studio.module.css";
 
 export default function InfoCard() {
+  const { t } = useTranslation();
   return (
     <div className={styles.introCard}>
-      <p className={styles.signature}>
-        HAS <ChevronLeft aria-hidden="true" />-
-        <ChevronRight aria-hidden="true" /> DEV
-      </p>
-      <p className={styles.introDescription}>
-        Sou Pedro Andrade,
-        <br /> transformo ideias em interfaces sólidas e atenção aos detalhes.
-      </p>
-      <a
-        href="#projetos"
-        className="my-5 inline-flex min-h-13 w-fit max-w-full items-center justify-center rounded-xl bg-purple-600 px-7 py-3 text-center text-base font-extrabold transition-colors hover:bg-purple-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-300 motion-reduce:transition-none sm:text-lg"
-      >
-        Explorar Projetos
+      <p className={styles.introRole}>{t("hero.role")}</p>
+      <p className={styles.introName}>{t("hero.introduction")}</p>
+      <p className={styles.introDescription}>{t("hero.description")}</p>
+      <a href="#projetos" className={styles.projectsLink}>
+        {t("hero.projects")}
+        <ArrowUpRight size={18} aria-hidden="true" />
       </a>
       <a href="#contato" className={styles.conversationLink}>
-        Vamos conversar
+        {t("hero.contact")}
+        <ArrowRight size={16} aria-hidden="true" />
       </a>
     </div>
   );

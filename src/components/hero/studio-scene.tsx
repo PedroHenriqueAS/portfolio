@@ -1,7 +1,17 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { useId } from "react";
-import { Cat, Coffee, Keyboard, Lightbulb, Monitor } from "lucide-react";
+import {
+  Cat,
+  Coffee,
+  Keyboard,
+  Lightbulb,
+  Monitor,
+  Sun,
+  Moon,
+} from "lucide-react";
 import {
   CAT_FRAME,
   type CatPhase,
@@ -10,6 +20,7 @@ import {
   STUDIO_TARGETS,
   TYPING_DISPLACEMENT,
   type StudioScreen,
+  type StudioTheme,
 } from "./studio-data";
 import {
   MONITOR_PATH,
@@ -17,9 +28,13 @@ import {
   MONITOR_TRANSFORM,
 } from "./monitor-perspective";
 import StudioMonitor from "./studio-monitor";
+import StudioDaylight from "./studio-daylight";
 import styles from "./studio.module.css";
 
 export interface StudioSceneProps {
+  theme: StudioTheme;
+  themeLoading: boolean;
+  daylightReady: boolean;
   lightsOn: boolean;
   typing: boolean;
   progress: number;
@@ -30,6 +45,7 @@ export interface StudioSceneProps {
   cat: CatPhase;
   compact?: boolean;
   onLight: () => void;
+  onTheme: () => void;
   onTyping: () => void;
   onScreen: () => void;
   onCoffee: () => void;
@@ -37,6 +53,9 @@ export interface StudioSceneProps {
 }
 
 export default function StudioScene({
+  theme,
+  themeLoading,
+  daylightReady,
   lightsOn,
   typing,
   progress,
@@ -47,11 +66,13 @@ export default function StudioScene({
   cat,
   compact = false,
   onLight,
+  onTheme,
   onTyping,
   onScreen,
   onCoffee,
   onCat,
 }: StudioSceneProps) {
+  const { t } = useTranslation();
   const id = useId().replace(/:/g, "");
   const animateHands = typing && !reducedMotion;
   const drinking = coffee !== "idle" && coffee !== "loading";
@@ -65,14 +86,33 @@ export default function StudioScene({
         opacity={lightsOn ? 0 : 1}
         className={styles.lightsOff}
       />
+      <image
+        href={daylightReady ? `/studio/coffee-${pose}-day.webp` : undefined}
+        width="1536"
+        height="1024"
+        className={styles.daylightLayer}
+      />
     </>
   );
   const targets = [
     {
+      name: "window",
+      box: STUDIO_TARGETS.window,
+      label: theme === "day" ? t("studio.windowNight") : t("studio.windowDay"),
+      short: themeLoading
+        ? t("studio.dawn")
+        : theme === "day"
+          ? t("studio.goodNight")
+          : t("studio.goodMorning"),
+      icon: theme === "day" ? Moon : Sun,
+      action: onTheme,
+      pressed: theme === "day",
+    },
+    {
       name: "character",
       box: STUDIO_TARGETS.character,
-      label: typing ? "Parar digitação" : "Fazer o personagem digitar",
-      short: typing ? "Pausar" : "Digitar",
+      label: typing ? t("studio.stopTyping") : t("studio.characterTyping"),
+      short: typing ? t("studio.pause") : t("studio.type"),
       icon: Keyboard,
       action: onTyping,
       pressed: typing,
@@ -80,8 +120,8 @@ export default function StudioScene({
     {
       name: "monitor",
       box: STUDIO_TARGETS.monitor,
-      label: "Trocar tela do monitor",
-      short: "Trocar tela",
+      label: t("studio.monitorChange"),
+      short: t("studio.changeScreen"),
       icon: Monitor,
       action: onScreen,
       pressed: undefined,
@@ -89,8 +129,8 @@ export default function StudioScene({
     {
       name: "lamp",
       box: STUDIO_TARGETS.lamp,
-      label: lightsOn ? "Apagar luminária" : "Acender luminária",
-      short: lightsOn ? "Apagar luz" : "Acender luz",
+      label: lightsOn ? t("studio.lampOff") : t("studio.lampOn"),
+      short: lightsOn ? t("studio.lightOff") : t("studio.lightOn"),
       icon: Lightbulb,
       action: onLight,
       pressed: lightsOn,
@@ -98,13 +138,13 @@ export default function StudioScene({
     {
       name: "coffee",
       box: STUDIO_TARGETS.coffee,
-      label: "Fazer o personagem tomar café",
+      label: t("studio.characterCoffee"),
       short:
         coffee === "loading"
-          ? "Preparando…"
+          ? t("studio.coffeePreparing")
           : drinking
-            ? "Pausa pro café"
-            : "Tomar café",
+            ? t("studio.coffeeBreak")
+            : t("studio.drinkCoffee"),
       icon: Coffee,
       action: onCoffee,
       pressed: undefined,
@@ -112,8 +152,8 @@ export default function StudioScene({
     {
       name: "cat",
       box: STUDIO_TARGETS.cat,
-      label: "Fazer carinho no gato",
-      short: cat === "awake" ? "Prrrr…" : "Fazer carinho",
+      label: t("studio.catPet"),
+      short: cat === "awake" ? t("studio.purr") : t("studio.petCat"),
       icon: Cat,
       action: onCat,
       pressed: undefined,
@@ -125,13 +165,10 @@ export default function StudioScene({
       viewBox="0 0 1536 1024"
       preserveAspectRatio={compact ? "xMidYMid meet" : "xMidYMid slice"}
       className={styles.scene}
-      aria-label={
-        compact
-          ? undefined
-          : "Estúdio interativo: luminária, personagem, monitor, café e gato"
-      }
+      aria-label={compact ? undefined : t("studio.sceneLabel")}
       aria-hidden={compact || undefined}
       data-exploring={exploring}
+      data-theme={theme}
       data-studio-scene={compact ? "preview" : "main"}
     >
       <defs>
@@ -280,6 +317,12 @@ export default function StudioScene({
           className={styles.lightsOff}
           opacity={lightsOn ? 0 : 1}
         />
+        <StudioDaylight
+          theme={theme}
+          ready={daylightReady}
+          lightsOn={lightsOn}
+          reducedMotion={reducedMotion}
+        />
       </g>
       {drinking && (
         <g
@@ -333,6 +376,13 @@ export default function StudioScene({
               height="1024"
               filter={reducedMotion ? undefined : `url(#${id}-purr)`}
             />
+            <image
+              href={daylightReady ? "/studio/cat-awake-day.webp" : undefined}
+              width="1536"
+              height="1024"
+              className={styles.daylightLayer}
+              filter={reducedMotion ? undefined : `url(#${id}-purr)`}
+            />
           </g>
         )}
         {!drinking && (
@@ -357,7 +407,7 @@ export default function StudioScene({
               fontSize="10"
               fontFamily="monospace"
             >
-              prrr…
+              {t("studio.catBadge")}
             </text>
           </g>
         )}
@@ -378,7 +428,7 @@ export default function StudioScene({
               fontFamily="monospace"
               fill="#eee2ff"
             >
-              pausa pro café
+              {t("studio.coffeeBadge")}
             </text>
           </g>
         )}
@@ -405,7 +455,7 @@ export default function StudioScene({
             fontFamily="monospace"
             fill="#eee2ff"
           >
-            digitando...
+            {t("studio.typingBadge")}
           </text>
         </g>
       )}
@@ -415,9 +465,11 @@ export default function StudioScene({
             <foreignObject key={name} {...box} overflow="visible">
               <button
                 type="button"
-                className={`${styles.hotspot} ${name === "monitor" ? styles.monitor : name === "character" ? styles.character : ""}`}
+                className={`${styles.hotspot} ${name === "monitor" ? styles.monitor : name === "character" ? styles.character : name === "window" ? styles.window : ""}`}
                 aria-label={label}
                 aria-pressed={pressed}
+                disabled={name === "window" && themeLoading}
+                aria-busy={name === "window" ? themeLoading : undefined}
                 aria-disabled={
                   name === "coffee"
                     ? coffee !== "idle"

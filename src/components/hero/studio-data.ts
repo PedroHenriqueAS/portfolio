@@ -14,15 +14,14 @@ export const STUDIO_CODE = [
 
 export const STUDIO_SCREENS = ["code", "preview", "terminal"] as const;
 export type StudioScreen = (typeof STUDIO_SCREENS)[number];
-export const SCREEN_LABELS: Record<StudioScreen, string> = {
-  code: "Editor",
-  preview: "Preview",
-  terminal: "Terminal",
-};
+export const SCREEN_LABELS = {
+  code: "studio.screens.code",
+  preview: "studio.screens.preview",
+  terminal: "studio.screens.terminal",
+} as const satisfies Record<StudioScreen, string>;
 
-// Coordinates belong to the original 1536 × 1024 artwork. Both the image
-// and its hit targets share this viewBox, including when the scene is cropped.
 export const STUDIO_TARGETS = {
+  window: { x: 465, y: 350, width: 248, height: 312 },
   character: { x: 835, y: 453, width: 280, height: 300 },
   monitor: { x: 1018, y: 445, width: 228, height: 190 },
   lamp: { x: 1247, y: 500, width: 102, height: 108 },
@@ -62,3 +61,13 @@ export const COFFEE_FRAMES = [
   "/studio/coffee-sip-off.webp",
 ];
 export const CAT_FRAME = "/studio/cat-awake.webp";
+
+export type StudioTheme = "night" | "day";
+export const DAYLIGHT_FRAMES = [
+  "/studio/window-night.webp",
+  "/studio/daylight.webp",
+  "/studio/daylight-off.webp",
+  "/studio/coffee-lift-day.webp",
+  "/studio/coffee-sip-day.webp",
+  "/studio/cat-awake-day.webp",
+];

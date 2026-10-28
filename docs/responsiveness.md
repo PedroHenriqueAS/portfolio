@@ -6,8 +6,9 @@ O layout usa margens compartilhadas em `src/app/globals.css`: 20px no celular,
 
 ## Componentes
 
-- **Navbar:** fixa, com fundo para manter o contraste durante a rolagem, links
-  acessíveis por teclado e espaçamento adaptado às telas estreitas.
+- **Navbar:** fixa e transparente, com texto claro sobre a hero e cores do tema
+  nas outras seções. Links e seletor PT/EN acessíveis por teclado, com espaçamento
+  adaptado às telas estreitas.
 - **Hero:** apresentação sem altura fixa, texto com quebra natural e controles
   que podem ocupar mais de uma linha. O painel do estúdio fica dentro da janela,
   com rolagem interna e botão de fechar sempre acessível. Em telas baixas, a
@@ -17,11 +18,12 @@ O layout usa margens compartilhadas em `src/app/globals.css`: 20px no celular,
 - **Projetos:** tocador e informações empilhados abaixo de 960px. A coleção de
   fitas permite rolagem horizontal abaixo de 768px. Toque/clique, teclado e
   arraste continuam disponíveis; controles do tocador têm área de 44 × 44px.
-- **Contato:** conteúdo e ilustração empilhados abaixo de 768px. Os botões ficam
+- **Contato:** fundo em toda a largura da tela, com conteúdo limitado a 1440px.
+  Conteúdo e ilustração empilhados abaixo de 768px. Os botões ficam
   em uma coluna abaixo de 480px. Os links continuam centralizados em
-  `src/components/contact/contact-data.ts`, aguardando os dados definitivos.
-- **Tema:** o fundo escuro permanece consistente com a arte do site mesmo
-  quando o sistema operacional está no modo claro.
+  `src/components/contact/contact-data.ts`.
+- **Tema:** a escolha dia/noite controla a paleta e as ilustrações do estúdio e
+  do contato, independentemente do tema do sistema operacional.
 
 ## Verificação
 

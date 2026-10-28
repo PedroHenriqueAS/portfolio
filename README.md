@@ -27,33 +27,40 @@ src/
     projects/                Reprodução, gestos, tocador e dados dos projetos
       previews/              Prévias ilustrativas e seus estilos
     contact/                 Informações, links e apresentação do contato
-  utils/                     Fontes e formatação compartilhadas
+  i18n/                      Provider e textos em português e inglês
+    locales/                 pt.json e en.json
+  utils/                     Fontes, formatação e carregamento de imagens
 tests/e2e/                   Testes de interação no navegador
 docs/                        Funcionamento e composição das interações
 public/                      Imagens e arquivos públicos
 ```
 
-Os dados ficam junto da seção correspondente. As regras de interação ficam em
-hooks; os componentes visuais recebem estados e ações por props. `HeroSection`
-mantém os textos no servidor e os passa para a parte interativa como elementos.
+Os textos ficam nos arquivos de idioma; os dados técnicos e links permanecem
+junto das seções. As regras de interação ficam em hooks. O provider de idiomas
+envolve a página e os componentes traduzidos usam `useTranslation`.
 
 - `use-studio.ts`: coordena as ações da hero e a pausa ao sair da cena.
 - `use-studio-moments.ts`: controla as sequências do café e do gato.
 - `use-studio-sound.ts`: controla ativação e descarte do áudio; `studio-audio.ts`
   contém a síntese dos sons.
+- `use-studio-theme.ts`: troca dia/noite após carregar as imagens e sincroniza
+  o tema global. As cores compartilhadas ficam em `src/app/globals.css`.
 - `use-project-playback.ts`: seleciona, reproduz e ejeta fitas, com limpeza dos timers.
 - `use-tape-drag.ts`: concentra captura do ponteiro, arraste e cancelamento.
 
 ## Onde editar o conteúdo
 
-| Conteúdo                               | Arquivo                                    |
-| -------------------------------------- | ------------------------------------------ |
-| Etapas da trajetória                   | `src/components/journey/journey-data.ts`   |
-| Projetos, tecnologias, links e prévias | `src/components/projects/projects-data.ts` |
-| E-mail, redes sociais e currículo      | `src/components/contact/contact-data.ts`   |
-| Textos do monitor e recursos da cena   | `src/components/hero/studio-data.ts`       |
-| Fontes                                 | `src/utils/fonts.ts`                       |
-| Título e descrição do site             | `src/app/layout.tsx`                       |
+| Conteúdo                                             | Arquivo                                    |
+| ---------------------------------------------------- | ------------------------------------------ |
+| Textos PT e EN, trajetória e descrições dos projetos | `src/i18n/locales/pt.json` e `en.json`     |
+| Links, cores, ícones e prévias dos projetos          | `src/components/projects/projects-data.ts` |
+| E-mail, redes sociais e currículo                    | `src/components/contact/contact-data.ts`   |
+| Código ilustrativo e recursos da cena                | `src/components/hero/studio-data.ts`       |
+| Fontes                                               | `src/utils/fonts.ts`                       |
+| Título e descrição do site                           | Chave `meta` nos arquivos de idioma        |
+
+O botão PT/EN na navbar troca o idioma sem recarregar a página e salva a escolha
+no navegador. A estrutura e as decisões de tradução estão em [docs/i18n.md](docs/i18n.md).
 
 Links de contato vazios continuam desabilitados. Para substituir as prévias
 ilustrativas, coloque uma imagem em `public/projects/` e preencha `previewImage`
@@ -94,6 +101,7 @@ em `test-results/` (ignorado pelo Git).
 - [Estúdio da hero](docs/hero-studio.md)
 - [Café e gato](docs/hero-coffee-cat.md)
 - [Responsividade](docs/responsiveness.md)
+- [Temas, iluminação e imagens diurnas](docs/themes.md)
 
 As âncoras usam rolagem suave nativa, com espaço para a navbar fixa. A navegação
 fica imediata quando o visitante prefere movimento reduzido. As animações também

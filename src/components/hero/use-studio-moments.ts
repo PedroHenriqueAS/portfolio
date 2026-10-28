@@ -7,32 +7,22 @@ import {
   COFFEE_FRAMES,
   type CatPhase,
   type CoffeePhase,
+  type StudioTheme,
 } from "./studio-data";
-
-const decodedImages = new Map<string, Promise<void>>();
-function preload(src: string) {
-  let pending = decodedImages.get(src);
-  if (!pending) {
-    const image = new Image();
-    image.src = src;
-    pending = image.decode().catch((error) => {
-      decodedImages.delete(src);
-      throw error;
-    });
-    decodedImages.set(src, pending);
-  }
-  return pending;
-}
+import { preloadImage } from "@/utils/preload-image";
+import type { StudioMessage } from "@/i18n/resources";
 
 // Separate timelines let the cat react during a coffee break. Tokens also
 // invalidate a pending image decode when the visitor leaves or starts typing.
 export function useStudioMoments({
+  theme,
   reducedMotion,
   setMessage,
   playSound,
 }: {
+  theme: StudioTheme;
   reducedMotion: boolean;
-  setMessage: (message: string) => void;
+  setMessage: (message: StudioMessage) => void;
   playSound: (sound: "cup" | "purr") => (() => void) | undefined;
 }) {
   const [coffee, setCoffee] = useState<CoffeePhase>("idle");
@@ -82,11 +72,19 @@ export function useStudioMoments({
     coffeeBusy.current = true;
     const run = ++coffeeRun.current;
     setCoffee("loading");
-    setMessage("Preparando uma pausa para o café…");
+    setMessage("coffeePreparing");
     try {
-      await Promise.all(COFFEE_FRAMES.map(preload));
+      const frames =
+        theme === "day"
+          ? [
+              ...COFFEE_FRAMES,
+              "/studio/coffee-lift-day.webp",
+              "/studio/coffee-sip-day.webp",
+            ]
+          : COFFEE_FRAMES;
+      await Promise.all(frames.map(preloadImage));
       if (run !== coffeeRun.current) return;
-      setMessage("Uma pausa para o café. As ideias também precisam respirar.");
+      setMessage("coffeeDrinking");
       setCoffee(reducedMotion ? "sip" : "lift");
       if (!reducedMotion) {
         coffeeTimers.current.push(setTimeout(() => setCoffee("sip"), 420));
@@ -99,7 +97,7 @@ export function useStudioMoments({
             coffeeBusy.current = false;
             coffeeTimers.current = [];
             playSound("cup");
-            setMessage("Café tomado. Pronto para mais uma ideia.");
+            setMessage("coffeeDone");
           },
           reducedMotion ? 1400 : 2700,
         ),
@@ -107,9 +105,7 @@ export function useStudioMoments({
     } catch {
       if (run !== coffeeRun.current) return;
       cancelCoffee();
-      setMessage(
-        "A cena do café não carregou. Clique na caneca para tentar novamente.",
-      );
+      setMessage("coffeeError");
     }
   };
 
@@ -118,18 +114,23 @@ export function useStudioMoments({
     catBusy.current = true;
     const run = ++catRun.current;
     setCat("loading");
-    setMessage("Chamando nosso companheiro de estúdio…");
+    setMessage("catCalling");
     try {
-      await preload(CAT_FRAME);
+      await Promise.all(
+        (theme === "day"
+          ? [CAT_FRAME, "/studio/cat-awake-day.webp"]
+          : [CAT_FRAME]
+        ).map(preloadImage),
+      );
       if (run !== catRun.current) return;
       setCat("awake");
-      setMessage("Carinho recebido. Prrrr…");
+      setMessage("catPet");
       stopPurr.current = playSound("purr");
       catTimer.current = setTimeout(
         () => {
           clearCat();
           setCat("idle");
-          setMessage("De volta à soneca. Vida boa por aqui.");
+          setMessage("catSleep");
         },
         reducedMotion ? 1600 : 3200,
       );
@@ -137,9 +138,7 @@ export function useStudioMoments({
       if (run !== catRun.current) return;
       clearCat();
       setCat("idle");
-      setMessage(
-        "A cena do gato não carregou. Clique nele para tentar novamente.",
-      );
+      setMessage("catError");
     }
   };
 

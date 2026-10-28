@@ -1,6 +1,11 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
+
 import { instrumentSerif, inter } from "@/utils/fonts";
 
 export default function HeroTitle() {
+  const { t } = useTranslation();
   return (
     <h1 className="text-center mt-3">
       <span
@@ -14,7 +19,7 @@ export default function HeroTitle() {
           text-[#F5F1FF]
         `}
       >
-        Criatividade em
+        {t("hero.title")}
       </span>
 
       <span
@@ -27,10 +32,10 @@ export default function HeroTitle() {
           italic
           leading-[0.9]
           tracking-[-0.04em]
-          text-[#C5B1FF]
+          text-[var(--studio-accent)]
         `}
       >
-        cada interação.
+        {t("hero.titleAccent")}
       </span>
     </h1>
   );

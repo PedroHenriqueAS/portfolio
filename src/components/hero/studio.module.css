@@ -1,4 +1,8 @@
 .hero {
+  --studio-accent: #c5b1ff;
+  --studio-action: #9810fa;
+  --studio-action-hover: #ad46ff;
+  --studio-action-text: #f5f1ff;
   position: relative;
   z-index: 1;
   isolation: isolate;
@@ -8,6 +12,15 @@
   width: 100%;
   color: #f5f1ff;
   background: #100d18;
+}
+.hero[data-theme="day"] {
+  --studio-accent: #ffd5a0;
+  --studio-action: #f3b475;
+  --studio-action-hover: #ffd09e;
+  --studio-action-text: #2d1a10;
+}
+.hero h1 span {
+  transition: color 1.2s ease;
 }
 .sceneLayer {
   position: absolute;
@@ -33,11 +46,58 @@
 .lightsOff {
   transition: opacity 0.65s ease;
 }
+.daylightLayer {
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+.daylightReveal {
+  transition: r 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scene[data-theme="day"] .daylightLayer {
+  opacity: 1;
+}
+.moon,
+.sun {
+  transform-origin: 675px 423px;
+  transition:
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.7s ease;
+}
+.moon {
+  filter: drop-shadow(0 0 6px #deb2ff);
+}
+.sun {
+  opacity: 0;
+  transform: translate(18px, 100px) scale(0.7);
+}
+.scene[data-theme="day"] .moon {
+  opacity: 0;
+  transform: translate(-22px, 86px) rotate(-25deg);
+}
+.scene[data-theme="day"] .sun {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.18s;
+}
 .readability {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(90deg, #100d1833, transparent 50%);
+}
+.readability::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background:
+    linear-gradient(180deg, #24180f80 35%, transparent 58%),
+    linear-gradient(0deg, #1b1217bf, transparent 23%),
+    linear-gradient(90deg, #17101b66, transparent 40%);
+  transition: opacity 1.6s ease;
+}
+.hero[data-theme="day"] .readability::after {
+  opacity: 1;
 }
 .content {
   position: relative;
@@ -71,30 +131,85 @@
   margin-top: auto;
   padding-top: 40px;
 }
-.signature {
+.introRole {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  gap: 10px;
+  color: var(--studio-accent);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.introRole::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  flex-shrink: 0;
+  background: currentColor;
+}
+.introName {
+  margin-top: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
 }
 .introDescription {
-  margin-top: 18px;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.45;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5dff1;
   text-wrap: pretty;
+}
+.projectsLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  align-self: flex-start;
+  max-width: 100%;
+  min-height: 50px;
+  margin-top: 24px;
+  padding: 12px 20px;
+  border: 1px solid color-mix(in srgb, var(--studio-accent) 25%, transparent);
+  border-radius: 10px;
+  background: var(--studio-action);
+  color: var(--studio-action-text);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 200ms ease;
+}
+.projectsLink:hover {
+  background: var(--studio-action-hover);
+}
+.projectsLink svg,
+.conversationLink svg {
+  flex-shrink: 0;
 }
 .conversationLink {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
+  gap: 12px;
+  margin-top: 10px;
   min-height: 44px;
-  border-bottom: 1px solid #a333f6;
+  font-size: 14px;
+  text-decoration: underline;
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--studio-accent) 50%,
+    transparent
+  );
+  text-underline-offset: 6px;
 }
 .conversationLink:hover {
-  color: #d5adff;
+  color: var(--studio-accent);
 }
-.conversationLink:focus-visible {
-  outline: 2px solid #dfbdff;
+.conversationLink:focus-visible,
+.projectsLink:focus-visible {
+  outline: 2px solid var(--studio-accent);
   outline-offset: 4px;
 }
 .footer {
@@ -116,6 +231,10 @@
   gap: 8px;
   color: #e6d5f6;
   font-size: 14px;
+}
+.locationIcon {
+  flex-shrink: 0;
+  color: var(--studio-accent);
 }
 .controls {
   display: flex;
@@ -149,10 +268,57 @@
 .controlButton:hover {
   background: #65369c80;
 }
+.themeButton {
+  min-width: 145px;
+  border-color: var(--studio-accent);
+}
+.themeIcon {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 22px;
+  overflow: hidden;
+}
+.themeIcon svg {
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  transition:
+    transform 0.6s ease,
+    opacity 0.4s ease;
+}
+.dayIcon {
+  transform: translateY(24px) rotate(45deg);
+  opacity: 0;
+}
+.hero[data-theme="day"] .nightIcon {
+  transform: translateY(-24px) rotate(-45deg);
+  opacity: 0;
+}
+.hero[data-theme="day"] .dayIcon {
+  transform: none;
+  opacity: 1;
+}
+.hero[data-theme="day"] .controlButton {
+  color: #ffe3bf;
+  border-color: #f6c18e99;
+  background: #302017b3;
+}
+.hero[data-theme="day"] .controlButton:hover,
+.hero[data-theme="day"] .controlButton[aria-pressed="true"] {
+  color: #fff2de;
+  border-color: #f6c18e;
+  background: #86563366;
+}
+.controlButton:disabled,
+.hotspot:disabled,
+.explorerActions button:disabled {
+  cursor: progress;
+}
 .exploreButton {
   min-height: 44px;
   padding-block: 5px;
-  border-bottom: 1px solid #a333f6;
+  border-bottom: 1px solid var(--studio-accent);
   font-size: 14px;
   cursor: pointer;
   white-space: nowrap;
@@ -160,7 +326,7 @@
 }
 .exploreButton:hover,
 .exploreButton[aria-expanded="true"] {
-  color: #d5adff;
+  color: var(--studio-accent);
 }
 .footer button:focus-visible {
   outline: 2px solid #dfbdff;
@@ -248,6 +414,35 @@
     0 52%
   );
 }
+.window {
+  clip-path: polygon(
+    0 23%,
+    14% 12%,
+    30% 3%,
+    51% 0,
+    70% 6%,
+    87% 14%,
+    100% 22%,
+    100% 100%,
+    0 100%
+  );
+  border-radius: 45% 45% 0 0;
+}
+.window .hotspotMark {
+  margin-top: 26px;
+}
+.window:hover,
+.window:focus-visible {
+  outline: none;
+  background: transparent;
+}
+.window:focus-visible .hotspotMark {
+  outline: 2px solid var(--studio-accent);
+  outline-offset: 4px;
+}
+.window .hotspotLabel {
+  top: calc(50% + 43px);
+}
 .monitor .hotspotMark {
   transform: translateY(-8px);
 }
@@ -295,14 +490,14 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: #79509f transparent;
+  scrollbar-color: var(--border-strong) transparent;
   padding: 20px;
-  border: 1px solid #79509f;
+  border: 1px solid var(--border-strong);
   border-radius: 16px;
-  background: #171020f5;
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
   box-shadow:
-    0 18px 60px #08050bcc,
-    inset 0 1px 0 #e1bdff16;
+    0 18px 60px #08050b3d,
+    inset 0 1px 0 var(--accent-soft);
   backdrop-filter: blur(16px);
   animation: revealPanel 0.2s ease-out;
 }
@@ -315,16 +510,16 @@
   align-items: flex-start;
   gap: 12px;
   padding-block: 4px 8px;
-  background: #171020;
+  background: var(--surface);
 }
 .explorerHeading span {
-  color: #b794d5;
+  color: var(--accent);
   font: 8px/1.5 monospace;
   letter-spacing: 0.14em;
 }
 .explorerHeading h2 {
   margin-top: 4px;
-  color: #f4eaff;
+  color: var(--foreground);
   font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -334,17 +529,17 @@
   place-items: center;
   flex: 0 0 44px;
   min-height: 44px;
-  border: 1px solid #73518b66;
+  border: 1px solid var(--border);
   border-radius: 50%;
-  color: #d4bae9;
+  color: var(--text-soft);
   cursor: pointer;
 }
 .explorerHeading > button:hover {
-  background: #503265;
+  background: var(--surface-hover);
 }
 .explorerHint {
   margin-top: 14px;
-  color: #c2a8d6;
+  color: var(--text-muted);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -352,7 +547,7 @@
   display: none;
 }
 .soundError {
-  color: #e3bbf4;
+  color: var(--text-soft);
   font-size: 12px;
   text-align: right;
 }
@@ -362,6 +557,9 @@
   gap: 10px;
   margin-top: 14px;
 }
+.themeAction {
+  grid-column: 1 / -1;
+}
 .explorerActions button {
   display: flex;
   align-items: center;
@@ -369,44 +567,44 @@
   gap: 8px;
   min-height: 48px;
   padding: 8px 10px;
-  border: 1px solid #76528f;
+  border: 1px solid var(--border-strong);
   border-radius: 10px;
-  background: #352044;
-  color: #eddbff;
+  background: var(--surface-raised);
+  color: var(--foreground);
   font-size: 12px;
   cursor: pointer;
   transition: background 0.2s;
 }
 .explorerActions button:hover,
 .explorerActions button[aria-pressed="true"] {
-  background: #633393;
+  background: var(--surface-hover);
 }
 .explorerActions button[aria-disabled="true"] {
-  color: #d8baf3;
-  border-color: #a371c8;
+  color: var(--accent);
+  border-color: var(--border-strong);
   cursor: default;
 }
 .explorerActions small {
   display: block;
   margin-top: 1px;
-  color: #c1a1dc;
+  color: var(--text-muted);
   font-size: 9px;
 }
 .explorerStatus {
   min-height: 36px;
   margin-top: 14px;
   padding-top: 12px;
-  border-top: 1px solid #67428366;
+  border-top: 1px solid var(--border);
   font-size: 11px;
   line-height: 1.5;
-  color: #c9b2dc;
+  color: var(--text-muted);
 }
 .scenePreview {
   display: none;
   height: min(210px, 26dvh);
   margin-top: 14px;
   overflow: hidden;
-  border: 1px solid #705083;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
   background: #100d18;
 }
@@ -488,12 +686,6 @@
     padding-top: 32px;
     max-width: 280px;
   }
-  .introDescription {
-    font-size: 18px;
-  }
-  .signature {
-    font-size: 14px;
-  }
   .explorer {
     padding: 16px;
   }
@@ -522,6 +714,14 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .projectsLink,
+  .hero h1 span,
+  .daylightLayer,
+  .daylightReveal,
+  .moon,
+  .sun,
+  .themeIcon svg,
+  .readability::after,
   .lightsOff,
   .hotspot,
   .hotspotMark,
@@ -542,4 +742,25 @@
   .steam {
     display: none;
   }
+}
+
+.hero[data-theme="day"] .hotspotMark {
+  border-color: #efbc87;
+  background: #3c271cef;
+  box-shadow:
+    0 0 0 5px #e7a5571c,
+    0 0 22px #e7a55744;
+}
+.hero[data-theme="day"] .hotspotLabel {
+  border-color: #ca976d88;
+  background: #302017ed;
+  color: #ffe5c4;
+}
+.hero[data-theme="day"] .hotspot:hover,
+.hero[data-theme="day"] .hotspot:focus-visible,
+.hero[data-theme="day"] .footer button:focus-visible {
+  outline-color: #efbc87;
+}
+.hero[data-theme="day"] .explorer button:focus-visible {
+  outline-color: var(--accent);
 }

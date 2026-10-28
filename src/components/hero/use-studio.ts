@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import type { StudioMessage } from "@/i18n/resources";
 import { useReducedMotion } from "motion/react";
 import {
   SCREEN_LABELS,
@@ -10,8 +12,10 @@ import {
 } from "./studio-data";
 import { useStudioSound } from "./use-studio-sound";
 import { useStudioMoments } from "./use-studio-moments";
+import { useStudioTheme } from "./use-studio-theme";
 
 export function useStudio() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const exploreRef = useRef<HTMLButtonElement>(null);
   const [lightsOn, setLightsOn] = useState(true);
@@ -19,14 +23,14 @@ export function useStudio() {
   const [typing, setTyping] = useState(false);
   const [progress, setProgress] = useState(STUDIO_CODE.length);
   const [screen, setScreen] = useState<StudioScreen>("code");
-  const [message, setMessage] = useState(
-    "Explore a luminária, o monitor, a caneca e o gato.",
-  );
+  const [message, setMessage] = useState<StudioMessage>("explore");
+  const { theme, themeLoading, daylightReady, toggleTheme } =
+    useStudioTheme(setMessage);
   const reducedMotion = Boolean(useReducedMotion());
   const { soundEnabled, soundError, toggleSound, playSound, stopSounds } =
     useStudioSound();
   const { coffee, cat, drinkCoffee, petCat, cancelCoffee, stopMoments } =
-    useStudioMoments({ reducedMotion, setMessage, playSound });
+    useStudioMoments({ theme, reducedMotion, setMessage, playSound });
 
   useEffect(() => {
     if (!typing) return;
@@ -42,7 +46,7 @@ export function useStudio() {
         if (nextProgress === STUDIO_CODE.length) {
           window.clearInterval(timer);
           setTyping(false);
-          setMessage("Código pronto. Clique no monitor para ver o resultado.");
+          setMessage("typingDone");
           playSound("done");
         }
       },
@@ -58,9 +62,7 @@ export function useStudio() {
       stopSounds();
       if (typing) {
         setTyping(false);
-        setMessage(
-          "Digitação pausada. Clique no personagem para começar novamente.",
-        );
+        setMessage("typingStopped");
       }
     };
     const onVisibility = () => {
@@ -81,8 +83,10 @@ export function useStudio() {
     setLightsOn(!lightsOn);
     setMessage(
       lightsOn
-        ? "Luminária apagada. Só o brilho da cidade e do monitor."
-        : "Luminária acesa. Vamos criar.",
+        ? theme === "day"
+          ? "dayLightOff"
+          : "nightLightOff"
+        : "lightOn",
     );
     playSound("switch");
   };
@@ -90,12 +94,12 @@ export function useStudio() {
     cancelCoffee();
     if (typing) {
       setTyping(false);
-      setMessage("Pausa para uma ideia.");
+      setMessage("typingPaused");
     } else {
       setScreen("code");
       setProgress(reducedMotion ? STUDIO_CODE.length : 0);
       setTyping(true);
-      setMessage("Transformando ideias em código…");
+      setMessage("typing");
       playSound("key");
     }
   };
@@ -111,7 +115,7 @@ export function useStudio() {
     setTyping(false);
     setScreen(next);
     setProgress(STUDIO_CODE.length);
-    setMessage(`Monitor: ${SCREEN_LABELS[next]}.`);
+    setMessage("screen");
     playSound("screen");
   };
   const closeExplorer = () => {
@@ -120,6 +124,9 @@ export function useStudio() {
   };
   const toggleExplorer = () => setExploring((current) => !current);
   const scene = {
+    theme,
+    themeLoading,
+    daylightReady,
     lightsOn,
     typing,
     progress,
@@ -129,6 +136,7 @@ export function useStudio() {
     coffee,
     cat,
     onLight: toggleLight,
+    onTheme: toggleTheme,
     onTyping: toggleTyping,
     onScreen: cycleScreen,
     onCoffee: takeCoffeeBreak,
@@ -140,7 +148,9 @@ export function useStudio() {
     exploreRef,
     soundEnabled,
     soundError,
-    message,
+    message: t(`studio.messages.${message}`, {
+      screen: t(SCREEN_LABELS[screen]),
+    }),
     scene,
     toggleSound,
     toggleExplorer,

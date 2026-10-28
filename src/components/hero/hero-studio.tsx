@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import type { ReactNode } from "react";
 import HeroFooter from "./hero-footer";
 import StudioScene from "./studio-scene";
@@ -14,6 +16,7 @@ interface HeroStudioProps {
 }
 
 export default function HeroStudio({ header, title, intro }: HeroStudioProps) {
+  const { t } = useTranslation();
   const {
     sectionRef,
     exploreRef,
@@ -31,8 +34,9 @@ export default function HeroStudio({ header, title, intro }: HeroStudioProps) {
     <section
       ref={sectionRef}
       id="inicio"
-      aria-label="Apresentação"
+      aria-label={t("hero.label")}
       className={styles.hero}
+      data-theme={scene.theme}
       data-lights={lightsOn ? "on" : "off"}
       data-typing={typing}
       data-screen={screen}
@@ -56,11 +60,14 @@ export default function HeroStudio({ header, title, intro }: HeroStudioProps) {
           {title}
           {intro}
           <HeroFooter
+            theme={scene.theme}
+            themeLoading={scene.themeLoading}
             lightsOn={lightsOn}
             soundEnabled={soundEnabled}
             exploring={exploring}
             exploreRef={exploreRef}
             onLight={scene.onLight}
+            onTheme={scene.onTheme}
             onSound={toggleSound}
             onExplore={toggleExplorer}
           >

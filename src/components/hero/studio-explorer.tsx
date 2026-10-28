@@ -1,7 +1,18 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { useEffect, useRef } from "react";
-import { Cat, Coffee, Keyboard, Monitor, Square, X } from "lucide-react";
+import {
+  Cat,
+  Coffee,
+  Keyboard,
+  Monitor,
+  Square,
+  Sun,
+  Moon,
+  X,
+} from "lucide-react";
 import StudioScene, { type StudioSceneProps } from "./studio-scene";
 import { SCREEN_LABELS } from "./studio-data";
 import styles from "./studio.module.css";
@@ -17,6 +28,7 @@ export default function StudioExplorer({
   message,
   onClose,
 }: StudioExplorerProps) {
+  const { t } = useTranslation();
   const closeExploreRef = useRef<HTMLButtonElement>(null);
   const { typing, screen, coffee, cat, onTyping, onScreen, onCoffee, onCat } =
     scene;
@@ -28,18 +40,18 @@ export default function StudioExplorer({
       id="studio-explorer"
       className={styles.explorer}
       role="group"
-      aria-label="Controles do estúdio"
+      aria-label={t("studio.controls")}
     >
       <div className={styles.explorerHeading}>
         <div>
-          <span>SEU PASSE PARA OS BASTIDORES</span>
-          <h2>Explore o estúdio.</h2>
+          <span>{t("studio.backstage")}</span>
+          <h2>{t("studio.exploreHeading")}</h2>
         </div>
         <button
           ref={closeExploreRef}
           type="button"
           onClick={onClose}
-          aria-label="Fechar controles do estúdio"
+          aria-label={t("studio.closeControls")}
         >
           <X size={18} />
         </button>
@@ -48,22 +60,36 @@ export default function StudioExplorer({
         <StudioScene {...scene} compact />
       </div>
       <p className={styles.explorerHint}>
-        <span className={styles.desktopHint}>
-          Toque nos objetos da cena ou experimente por aqui.
-        </span>
-        <span className={styles.mobileHint}>
-          Use os controles para interagir com o estúdio.
-        </span>
+        <span className={styles.desktopHint}>{t("studio.desktopHint")} </span>
+        <span className={styles.mobileHint}>{t("studio.mobileHint")} </span>
       </p>
       <div className={styles.explorerActions}>
+        <button
+          type="button"
+          className={styles.themeAction}
+          onClick={scene.onTheme}
+          aria-pressed={scene.theme === "day"}
+          aria-busy={scene.themeLoading}
+          disabled={scene.themeLoading}
+        >
+          {scene.theme === "day" ? <Moon size={18} /> : <Sun size={18} />}
+          <span>
+            {scene.themeLoading
+              ? t("studio.dawn")
+              : scene.theme === "day"
+                ? t("studio.bringNight")
+                : t("studio.bringSun")}
+          </span>
+        </button>
         <button type="button" onClick={onTyping} aria-pressed={typing}>
           {typing ? <Square size={16} /> : <Keyboard size={18} />}
-          <span>{typing ? "Pausar" : "Digitar"}</span>
+          <span>{typing ? t("studio.pause") : t("studio.type")}</span>
         </button>
         <button type="button" onClick={onScreen}>
           <Monitor size={18} />
           <span>
-            Trocar tela<small>{SCREEN_LABELS[screen]}</small>
+            {t("studio.changeScreen")}
+            <small>{t(SCREEN_LABELS[screen])}</small>
           </span>
         </button>
         <button
@@ -76,10 +102,10 @@ export default function StudioExplorer({
           <Coffee size={18} />
           <span>
             {coffee === "loading"
-              ? "Preparando…"
+              ? t("studio.coffeePreparing")
               : coffee !== "idle"
-                ? "Pausa pro café"
-                : "Tomar café"}
+                ? t("studio.coffeeBreak")
+                : t("studio.drinkCoffee")}
           </span>
         </button>
         <button
@@ -92,10 +118,10 @@ export default function StudioExplorer({
           <Cat size={18} />
           <span>
             {cat === "loading"
-              ? "Chamando…"
+              ? t("studio.callingCat")
               : cat === "awake"
-                ? "Prrrr…"
-                : "Fazer carinho"}
+                ? t("studio.purr")
+                : t("studio.petCat")}
           </span>
         </button>
       </div>
