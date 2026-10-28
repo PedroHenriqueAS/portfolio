@@ -1,0 +1,593 @@
+{
+  "nav": {
+    "navigation": "Navegação principal",
+    "home": "Pedro HAS — início",
+    "projects": "projetos",
+    "journey": "jornada",
+    "contact": "contato",
+    "tagline": "PEDRO HAS / DESENVOLVEDOR FRONT-END",
+    "switchLanguage": "Mudar para inglês"
+  },
+  "hero": {
+    "title": "Criatividade em",
+    "titleAccent": "cada interação.",
+    "role": "Desenvolvedor front-end",
+    "introduction": "Sou Pedro Andrade.",
+    "description": "Transformo ideias em interfaces com personalidade e atenção aos detalhes.",
+    "projects": "Explorar Projetos",
+    "contact": "Vamos conversar",
+    "location": "São Paulo, SP | desde 2019",
+    "label": "Apresentação"
+  },
+  "studio": {
+    "explore": "Explore o estúdio",
+    "enableNight": "Ativar tema noturno",
+    "enableDay": "Ativar tema diurno",
+    "dawn": "Amanhecendo…",
+    "themeDay": "Tema: Dia",
+    "themeNight": "Tema: Noite",
+    "lightOff": "Apagar luz",
+    "lightOn": "Acender luz",
+    "light": "Luz",
+    "soundOff": "Desativar som",
+    "soundOn": "Ativar som",
+    "sound": "Som",
+    "controls": "Controles do estúdio",
+    "backstage": "SEU PASSE PARA OS BASTIDORES",
+    "exploreHeading": "Explore o estúdio.",
+    "closeControls": "Fechar controles do estúdio",
+    "desktopHint": "Toque nos objetos da cena ou experimente por aqui.",
+    "mobileHint": "Use os controles para interagir com o estúdio.",
+    "bringNight": "Trazer a noite",
+    "bringSun": "Deixar o sol entrar",
+    "pause": "Pausar",
+    "type": "Digitar",
+    "changeScreen": "Trocar tela",
+    "coffeePreparing": "Preparando…",
+    "coffeeBreak": "Pausa pro café",
+    "drinkCoffee": "Tomar café",
+    "callingCat": "Chamando…",
+    "purr": "Prrrr…",
+    "petCat": "Fazer carinho",
+    "windowNight": "Trazer a noite pela janela",
+    "windowDay": "Deixar o sol entrar pela janela",
+    "goodNight": "Boa noite",
+    "goodMorning": "Bom dia",
+    "stopTyping": "Parar digitação",
+    "characterTyping": "Fazer o personagem digitar",
+    "monitorChange": "Trocar tela do monitor",
+    "lampOff": "Apagar luminária",
+    "lampOn": "Acender luminária",
+    "characterCoffee": "Fazer o personagem tomar café",
+    "catPet": "Fazer carinho no gato",
+    "sceneLabel": "Estúdio interativo: janela, luminária, personagem, monitor, café e gato",
+    "coffeeBadge": "pausa pro café",
+    "typingBadge": "digitando...",
+    "catBadge": "prrr…",
+    "monitorTyping": "● digitando...",
+    "monitorReady": "✓ pronto para criar",
+    "previewTitle": "Ideias que",
+    "previewAccent": "ganham vida.",
+    "previewProjects": "Explorar projetos ↗",
+    "terminalIdeas": "✓ ideias conectadas",
+    "terminalDetails": "✓ detalhes refinados",
+    "terminalReady": "✓ experiência pronta",
+    "terminalCuriosity": "Feito com curiosidade.",
+    "terminalPrompt": "$ vamos criar algo? _",
+    "screens": {
+      "code": "Editor",
+      "preview": "Prévia",
+      "terminal": "Terminal"
+    },
+    "messages": {
+      "explore": "Explore a janela, a luminária, o monitor, a caneca e o gato.",
+      "typingDone": "Código pronto. Clique no monitor para ver o resultado.",
+      "typingStopped": "Digitação pausada. Clique no personagem para começar novamente.",
+      "dayLightOff": "Luminária apagada. A luz do sol cuida do resto.",
+      "nightLightOff": "Luminária apagada. Só o brilho da cidade e do monitor.",
+      "lightOn": "Luminária acesa. Vamos criar.",
+      "typingPaused": "Pausa para uma ideia.",
+      "typing": "Transformando ideias em código…",
+      "screen": "Monitor: {{screen}}.",
+      "coffeePreparing": "Preparando uma pausa para o café…",
+      "coffeeDrinking": "Uma pausa para o café. As ideias também precisam respirar.",
+      "coffeeDone": "Café tomado. Pronto para mais uma ideia.",
+      "coffeeError": "A cena do café não carregou. Clique na caneca para tentar novamente.",
+      "catCalling": "Chamando nosso companheiro de estúdio…",
+      "catPet": "Carinho recebido. Prrrr…",
+      "catSleep": "De volta à soneca. Vida boa por aqui.",
+      "catError": "A cena do gato não carregou. Clique nele para tentar novamente.",
+      "night": "Boa noite. A lua voltou à janela.",
+      "day": "Bom dia. O sol está iluminando o estúdio.",
+      "themeError": "O dia não carregou. Tente trocar o tema novamente.",
+      "soundError": "Não foi possível ativar o som. Tente novamente."
+    }
+  },
+  "journey": {
+    "eyebrow": "02 / TRAJETÓRIA",
+    "title": "Minha",
+    "titleAccent": "jornada.",
+    "subtitle": "Experiências que moldaram meu jeito de criar.",
+    "period": "2019 — HOJE",
+    "stages": "Etapas da jornada",
+    "selectStage": "Selecione uma etapa da jornada.",
+    "deliveries": "Principais entregas",
+    "learnings": "Aprendizados",
+    "stage": "Etapa da jornada",
+    "chapter": "Capítulo {{current}} de {{total}}: {{title}}",
+    "next": "Próxima etapa",
+    "steps": [
+      {
+        "id": "consultoria-digital",
+        "title": "Consultoria Digital",
+        "period": "2019 — 2020",
+        "detailedPeriod": "Jan. 2019 — Mai. 2020",
+        "category": "Agência e marketing digital",
+        "role": "Desenvolvedor Front-end",
+        "description": "Minha primeira experiência profissional, desenvolvendo e mantendo sites para diferentes clientes em uma agência de marketing digital, com foco em responsividade e SEO.",
+        "deliveries": [
+          {
+            "title": "Sites e landing pages",
+            "description": "Desenvolvimento e manutenção de páginas responsivas para diferentes clientes."
+          },
+          {
+            "title": "WordPress e Magento",
+            "description": "Manutenção e evolução de sites institucionais e lojas virtuais nessas plataformas."
+          },
+          {
+            "title": "SEO e integrações",
+            "description": "Melhorias voltadas à busca orgânica e integração entre interfaces e aplicações web."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Fundamentos da web",
+            "description": "Aplicação prática de HTML, CSS e JavaScript na construção de interfaces."
+          },
+          {
+            "title": "Diversidade técnica",
+            "description": "Contato com Angular, PHP, Node.js, MySQL e aplicações com arquitetura MVC."
+          },
+          {
+            "title": "Contexto de negócio",
+            "description": "Adaptação a diferentes clientes, demandas de SEO e manutenção de sistemas."
+          }
+        ],
+        "technologies": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "PHP",
+          "Angular",
+          "WordPress",
+          "Magento"
+        ]
+      },
+      {
+        "id": "doris-mobi",
+        "title": "Doris.mobi",
+        "period": "2020 — 2021",
+        "detailedPeriod": "Jul. 2020 — Mai. 2021",
+        "category": "Qualidade de software",
+        "role": "Analista de Testes e QA",
+        "description": "Uma etapa dedicada à qualidade de produtos digitais, com testes manuais e automatizados em JavaScript e validação de novas funcionalidades.",
+        "deliveries": [
+          {
+            "title": "Testes automatizados",
+            "description": "Desenvolvimento e execução de testes em JavaScript para validar funcionalidades."
+          },
+          {
+            "title": "Testes funcionais",
+            "description": "Verificação manual de fluxos, comportamento e usabilidade do produto."
+          },
+          {
+            "title": "Análise de falhas",
+            "description": "Identificação e registro de bugs para apoiar correções e melhorias."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "JavaScript na prática",
+            "description": "Aprofundamento da linguagem ao desenvolver testes automatizados."
+          },
+          {
+            "title": "Olhar de qualidade",
+            "description": "Atenção a cenários de erro e ao comportamento esperado de cada funcionalidade."
+          },
+          {
+            "title": "Colaboração com o time",
+            "description": "Comunicação de falhas e acompanhamento de correções em uma rotina ágil."
+          }
+        ],
+        "technologies": [
+          "JavaScript",
+          "Testes manuais",
+          "Testes automatizados",
+          "Testes funcionais"
+        ]
+      },
+      {
+        "id": "direcao-concursos",
+        "title": "Direção Concursos",
+        "period": "2021 — 2022",
+        "detailedPeriod": "Ago. 2021 — Dez. 2022",
+        "category": "Educação e e-commerce",
+        "role": "Desenvolvedor Full Stack",
+        "description": "Retorno ao desenvolvimento, atuando no front-end e no back-end de um e-commerce e de uma plataforma de ensino, com React, TypeScript e Node.js.",
+        "deliveries": [
+          {
+            "title": "Plataforma de ensino",
+            "description": "Desenvolvimento de interfaces e funcionalidades para acesso a aulas e conteúdos."
+          },
+          {
+            "title": "E-commerce e assinaturas",
+            "description": "Implementação e manutenção de fluxos de compra, checkout e assinaturas."
+          },
+          {
+            "title": "APIs e regras de negócio",
+            "description": "Criação e integração de APIs REST com Node.js, Express e MongoDB."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Visão Full Stack",
+            "description": "Entendimento do fluxo entre interface, APIs, regras de negócio e banco de dados."
+          },
+          {
+            "title": "Estado e organização",
+            "description": "Uso de Redux e TypeScript na evolução de aplicações com React e Next.js."
+          },
+          {
+            "title": "Trabalho em produto",
+            "description": "Evolução contínua de produtos educacionais e comerciais em um time Scrum."
+          }
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "Redux",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "Mongoose"
+        ]
+      },
+      {
+        "id": "hospital-einstein",
+        "title": "Hospital Israelita Albert Einstein",
+        "period": "2022 — 2025",
+        "detailedPeriod": "Dez. 2022 — Jan. 2025",
+        "category": "Saúde e tecnologia",
+        "role": "Desenvolvedor Front-end",
+        "description": "Desenvolvimento de aplicações para a área da saúde, conectando formulários médicos, documentos e videoatendimento, com atenção à usabilidade e aos dados sensíveis.",
+        "deliveries": [
+          {
+            "title": "Formulários médicos",
+            "description": "Construção de formulários dinâmicos e validações com React Hook Form."
+          },
+          {
+            "title": "Documentos e atendimento",
+            "description": "Relatórios, upload de PDFs e integração de videoatendimento com Vonage."
+          },
+          {
+            "title": "Testes automatizados",
+            "description": "Testes de componentes e fluxos com Jest, React Testing Library e Cypress."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Dados sensíveis",
+            "description": "Cuidado com informações de saúde e requisitos de segurança das aplicações."
+          },
+          {
+            "title": "Design System e usabilidade",
+            "description": "Manutenção de padrões, componentes reutilizáveis e interfaces acessíveis."
+          },
+          {
+            "title": "Colaboração e diagnóstico",
+            "description": "Trabalho com produto e QA, análise de logs e contato com AWS e Datadog."
+          }
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "React Hook Form",
+          "Tailwind CSS",
+          "Styled Components",
+          "Context API",
+          "Jest",
+          "Cypress"
+        ]
+      },
+      {
+        "id": "intercambio-irlanda",
+        "title": "Intercâmbio na Irlanda",
+        "period": "2025 — 2026",
+        "detailedPeriod": "2025 — Fev. 2026",
+        "category": "Intercâmbio e desenvolvimento pessoal",
+        "role": "Estudante de inglês",
+        "description": "Pausa na carreira de desenvolvimento para estudar inglês e viver na Irlanda, com imersão em uma nova cultura e uso do idioma no dia a dia.",
+        "deliveries": [
+          {
+            "title": "Estudo de inglês",
+            "description": "Aulas na Berlitz, em Dublin, com prática do idioma fora da sala de aula."
+          },
+          {
+            "title": "Vivência no exterior",
+            "description": "Rotina de estudos e trabalho na Irlanda, usando inglês em situações reais."
+          },
+          {
+            "title": "Imersão cultural",
+            "description": "Convivência com diferentes nacionalidades e adaptação à vida em outro país."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Comunicação em inglês",
+            "description": "Desenvolvimento da compreensão e da expressão oral em situações cotidianas."
+          },
+          {
+            "title": "Autonomia",
+            "description": "Organização da rotina e responsabilidade ao viver e trabalhar no exterior."
+          },
+          {
+            "title": "Adaptação",
+            "description": "Flexibilidade para lidar com diferenças culturais e situações novas."
+          }
+        ],
+        "technologies": [
+          "Inglês",
+          "Comunicação",
+          "Autonomia",
+          "Adaptação cultural"
+        ]
+      },
+      {
+        "id": "freelance",
+        "title": "Freelance e estudos",
+        "period": "2026 — atual",
+        "category": "Freelance e atualização técnica",
+        "role": "Desenvolvedor Front-end",
+        "description": "Após retornar ao Brasil, realizei freelas pontuais e sigo me atualizando, revisando conhecimentos e aprofundando meus estudos em inteligência artificial.",
+        "deliveries": [
+          {
+            "title": "Sites e manutenção",
+            "description": "Freelas em WordPress, com ajustes em temas, páginas e correção de problemas."
+          },
+          {
+            "title": "E-commerce",
+            "description": "Demandas em VTEX IO e Shopify, incluindo landing pages, vitrines e análise de tags."
+          },
+          {
+            "title": "Projetos autorais",
+            "description": "Evolução do FormLab e da Pokédex para aplicar e consolidar os estudos."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Atualização em Front-end",
+            "description": "Revisão de React, TypeScript e Next.js e prática com Angular, RxJS e Signals."
+          },
+          {
+            "title": "Back-end e serviços",
+            "description": "Estudos e exercícios com Node.js, NestJS, Java/Spring e fundamentos de AWS."
+          },
+          {
+            "title": "Inteligência artificial",
+            "description": "Estudos de LLMs, RAG, MCP e fine-tuning, com planos de aplicar RAG à análise de times."
+          }
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "WordPress",
+          "VTEX IO",
+          "Shopify",
+          "Node.js",
+          "IA generativa"
+        ]
+      }
+    ]
+  },
+  "common": {
+    "technologies": "Tecnologias",
+    "technologiesLabel": "Tecnologias utilizadas",
+    "pagination": "{{current}} de {{total}}",
+    "previous": "Anterior",
+    "comingSoon": "Disponível em breve",
+    "unavailableLabel": "{{label}} — disponível em breve",
+    "externalLabel": "{{label}} (abre em nova aba)"
+  },
+  "projects": {
+    "eyebrow": "03 / PROJETOS",
+    "title": "Projetos",
+    "titleAccent": "selecionados.",
+    "subtitle": "Ideias que ganharam vida na web.",
+    "archive": "ACERVO DIGITAL / 2026",
+    "tapeStatus": "{{title}}. {{state}}. Fita {{current}} de {{total}}.",
+    "ejected": "Fita ejetada. Selecione ou arraste outra fita para o tocador.",
+    "chooseTape": "ESCOLHA UMA FITA",
+    "previous": "Projeto anterior",
+    "next": "Próximo projeto",
+    "tapesLabel": "Fitas de projetos",
+    "playTape": "Reproduzir fita {{title}}",
+    "loadTape": "Carregar fita {{title}}",
+    "loaded": "NO APARELHO",
+    "pointerHint": "Arraste uma fita até o aparelho ou clique para reproduzir.",
+    "touchHint": "Toque para reproduzir. Deslize para ver as fitas ou arraste até o tocador.",
+    "keyboardHint": "Use Tab e Enter para selecionar. Escape cancela o arraste.",
+    "collection": "UMA FITA, UMA HISTÓRIA.",
+    "emptyEyebrow": "O PRÓXIMO PLAY É SEU",
+    "emptyTitle": "Uma fita.",
+    "emptyAccent": "Uma nova história.",
+    "emptyDescription": "Arraste um projeto até o tocador ou selecione uma fita abaixo para explorar.",
+    "technologies": "TECNOLOGIAS",
+    "visit": "Ver site",
+    "external": "de {{title}} (abre em nova aba)",
+    "siteSoon": "Site em breve",
+    "codeSoon": "Código em breve",
+    "playerLabel": "Tocador VHS: solte uma fita aqui",
+    "tape": "FITA",
+    "emptyScreen": "APERTE O PLAY",
+    "emptyScreenAccent": "NA PRÓXIMA IDEIA.",
+    "insert": "INSIRA UMA FITA PARA COMEÇAR",
+    "loadingTape": "▶ CARREGANDO FITA {{number}}",
+    "insertSlot": "VHS · INSERIR FITA",
+    "play": "Reproduzir apresentação",
+    "pause": "Pausar apresentação",
+    "eject": "Ejetar fita",
+    "drop": "SOLTE PARA DAR PLAY",
+    "drag": "ARRASTE ATÉ O TOCADOR",
+    "previewAlt": "Prévia do projeto {{title}}",
+    "previewLabel": "Prévia demonstrativa de {{title}}",
+    "previewSoon": "Prévia em breve",
+    "playback": {
+      "playing": "Em exibição",
+      "paused": "Pausado",
+      "loading": "Carregando fita",
+      "empty": "Aguardando uma fita"
+    },
+    "items": {
+      "formlab": {
+        "title": "FormLab",
+        "category": "E-commerce / Projeto pessoal",
+        "description": "Moda, identidade e uma experiência de compra com atenção aos detalhes.",
+        "tapeLabel": "STREETWEAR / WEB",
+        "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+        "features": [
+          {
+            "title": "Catálogo e filtros",
+            "description": "Encontre produtos com facilidade."
+          },
+          {
+            "title": "Interface responsiva",
+            "description": "Uma experiência em todos os dispositivos."
+          }
+        ]
+      },
+      "pokedex": {
+        "title": "Pokédex",
+        "category": "Web app / Projeto pessoal",
+        "description": "Um universo de descobertas, com busca rápida e informações organizadas em cada detalhe.",
+        "tapeLabel": "REACT + TYPESCRIPT",
+        "technologies": ["React", "TypeScript", "API REST"],
+        "features": [
+          {
+            "title": "Busca e descoberta",
+            "description": "Explore a coleção por nome ou tipo."
+          },
+          {
+            "title": "Tudo no seu lugar",
+            "description": "Características organizadas em uma interface clara."
+          }
+        ]
+      },
+      "taskflow": {
+        "title": "TaskFlow",
+        "category": "Produtividade / Em desenvolvimento",
+        "description": "Menos ruído, mais foco. Um espaço para organizar ideias e acompanhar o que vem a seguir.",
+        "tapeLabel": "KANBAN / EM DESENVOLVIMENTO",
+        "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+        "features": [
+          {
+            "title": "Quadros de tarefas",
+            "description": "Visualize cada etapa do seu trabalho."
+          },
+          {
+            "title": "Seu fluxo, em qualquer tela",
+            "description": "Uma organização que acompanha sua rotina."
+          }
+        ]
+      }
+    },
+    "display": {
+      "empty": "SEM FITA",
+      "loading": "LENDO",
+      "paused": "PAUSA {{number}}",
+      "playing": "PLAY {{number}}",
+      "pauseBadge": "PAUSA",
+      "stereo": "HI-FI ESTÉREO",
+      "preview": "{{title}} / prévia",
+      "standby": "has video / espera"
+    }
+  },
+  "contact": {
+    "eyebrow": "04 / CONTATO",
+    "finalCredits": "CRÉDITOS FINAIS",
+    "creditsLabel": "Créditos do portfólio",
+    "creation": "CRIAÇÃO E CÓDIGO",
+    "locationLabel": "LOCALIZAÇÃO",
+    "location": "São Paulo, Brasil",
+    "editionLabel": "EDIÇÃO",
+    "edition": "Portfólio {{year}}",
+    "backToTop": "Voltar ao início",
+    "title": "Vamos criar",
+    "titleAccent": "algo juntos.",
+    "description": "Tem uma ideia, um projeto ou",
+    "descriptionEnd": "uma oportunidade? Vamos conversar.",
+    "email": "Enviar e-mail",
+    "resume": "Baixar currículo",
+    "socials": "Redes sociais"
+  },
+  "previews": {
+    "store": {
+      "nav": "Início　 Loja　 Coleções　 Sobre",
+      "eyebrow": "STREETWEAR / CULTURA / EXPRESSÃO",
+      "title1": "VISTA",
+      "title2": "O QUE",
+      "title3": "TE MOVE.",
+      "description": "Roupas que conectam",
+      "descriptionEnd": "estilo, cultura e propósito.",
+      "collection": "Ver coleção ↗",
+      "latest": "Novidades",
+      "all": "Ver todos →",
+      "tokyo": "Camiseta Tokyo",
+      "fuji": "Camiseta Fuji",
+      "kuro": "Camiseta Kuro",
+      "sakura": "Camiseta Sakura",
+      "edition": "LANÇAMENTO / 2026"
+    },
+    "pokedex": {
+      "tagline": "EXPLORE. DESCUBRA. COLECIONE.",
+      "eyebrow": "SEU GUIA DE DESCOBERTAS",
+      "title": "Qual é o seu",
+      "titleEnd": "próximo favorito?",
+      "description": "Um universo inteiro para explorar.",
+      "placeholder": "Busque por nome ou número",
+      "search": "Buscar",
+      "grass": "PLANTA",
+      "fire": "FOGO",
+      "water": "ÁGUA"
+    },
+    "kanban": {
+      "projects": "▦　Meus projetos",
+      "overview": "◇　Visão geral",
+      "tasks": "☷　Minhas tarefas",
+      "calendar": "◷　Calendário",
+      "newProject": "+ Novo projeto",
+      "breadcrumb": "WORKSPACE / PROJETOS",
+      "title": "Ideias em movimento.",
+      "description": "Um espaço para o seu próximo grande projeto.",
+      "todo": "A fazer",
+      "references": "Explorar referências",
+      "components": "Planejar componentes",
+      "typography": "Definir tipografia",
+      "inProgress": "Em progresso",
+      "interface": "Construir a interface",
+      "responsive": "Ajustar responsividade",
+      "done": "Concluído",
+      "organize": "Organizar o projeto",
+      "palette": "Escolher a paleta",
+      "development": "DESENVOLVIMENTO",
+      "detail": "Um detalhe de cada vez.",
+      "workspace": "ÁREA DE TRABALHO",
+      "design": "DESIGN"
+    }
+  },
+  "meta": {
+    "title": "Pedro HAS — Desenvolvedor Front-end",
+    "description": "Projetos, experiências e ideias de Pedro Andrade. Interfaces com identidade e atenção a cada interação."
+  }
+}

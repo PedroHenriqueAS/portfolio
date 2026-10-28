@@ -1,0 +1,593 @@
+{
+  "nav": {
+    "navigation": "Main navigation",
+    "home": "Pedro HAS — home",
+    "projects": "projects",
+    "journey": "journey",
+    "contact": "contact",
+    "tagline": "PEDRO HAS / FRONT-END DEVELOPER",
+    "switchLanguage": "Switch to Portuguese"
+  },
+  "hero": {
+    "title": "Creativity in",
+    "titleAccent": "every interaction.",
+    "role": "Front-end developer",
+    "introduction": "I'm Pedro Andrade.",
+    "description": "I turn ideas into interfaces with personality and care in every detail.",
+    "projects": "Explore Projects",
+    "contact": "Let's talk",
+    "location": "São Paulo, Brazil | since 2019",
+    "label": "Introduction"
+  },
+  "studio": {
+    "explore": "Explore the studio",
+    "enableNight": "Switch to night theme",
+    "enableDay": "Switch to day theme",
+    "dawn": "Sunrise…",
+    "themeDay": "Theme: Day",
+    "themeNight": "Theme: Night",
+    "lightOff": "Turn off light",
+    "lightOn": "Turn on light",
+    "light": "Light",
+    "soundOff": "Mute sound",
+    "soundOn": "Enable sound",
+    "sound": "Sound",
+    "controls": "Studio controls",
+    "backstage": "YOUR BACKSTAGE PASS",
+    "exploreHeading": "Explore the studio.",
+    "closeControls": "Close studio controls",
+    "desktopHint": "Tap the objects in the scene or try the controls here.",
+    "mobileHint": "Use the controls to interact with the studio.",
+    "bringNight": "Bring back the night",
+    "bringSun": "Let the sunshine in",
+    "pause": "Pause",
+    "type": "Type",
+    "changeScreen": "Change screen",
+    "coffeePreparing": "Brewing…",
+    "coffeeBreak": "Coffee break",
+    "drinkCoffee": "Drink coffee",
+    "callingCat": "Calling…",
+    "purr": "Purrr…",
+    "petCat": "Pet the cat",
+    "windowNight": "Bring the night back through the window",
+    "windowDay": "Let the sunshine in through the window",
+    "goodNight": "Good night",
+    "goodMorning": "Good morning",
+    "stopTyping": "Stop typing",
+    "characterTyping": "Make the character type",
+    "monitorChange": "Change the monitor screen",
+    "lampOff": "Turn off the desk lamp",
+    "lampOn": "Turn on the desk lamp",
+    "characterCoffee": "Make the character drink coffee",
+    "catPet": "Pet the cat in the studio",
+    "sceneLabel": "Interactive studio: window, lamp, character, monitor, coffee and cat",
+    "coffeeBadge": "coffee break",
+    "typingBadge": "typing...",
+    "catBadge": "purrr…",
+    "monitorTyping": "● typing...",
+    "monitorReady": "✓ ready to create",
+    "previewTitle": "Ideas that",
+    "previewAccent": "come to life.",
+    "previewProjects": "Explore projects ↗",
+    "terminalIdeas": "✓ ideas connected",
+    "terminalDetails": "✓ details refined",
+    "terminalReady": "✓ experience ready",
+    "terminalCuriosity": "Built with curiosity.",
+    "terminalPrompt": "$ shall we build something? _",
+    "screens": {
+      "code": "Editor",
+      "preview": "Preview",
+      "terminal": "Terminal"
+    },
+    "messages": {
+      "explore": "Explore the window, lamp, monitor, mug and cat.",
+      "typingDone": "Code ready. Click the monitor to see the result.",
+      "typingStopped": "Typing paused. Click the character to start again.",
+      "dayLightOff": "Lamp off. The sunshine takes care of the rest.",
+      "nightLightOff": "Lamp off. Just the glow of the city and the monitor.",
+      "lightOn": "Lamp on. Let's create.",
+      "typingPaused": "Taking a moment for an idea.",
+      "typing": "Turning ideas into code…",
+      "screen": "Monitor: {{screen}}.",
+      "coffeePreparing": "Getting ready for a coffee break…",
+      "coffeeDrinking": "A coffee break. Ideas need room to breathe, too.",
+      "coffeeDone": "Coffee finished. Ready for another idea.",
+      "coffeeError": "The coffee scene couldn't load. Click the mug to try again.",
+      "catCalling": "Calling our studio companion…",
+      "catPet": "Pets received. Purrr…",
+      "catSleep": "Back to napping. Life is good here.",
+      "catError": "The cat scene couldn't load. Click the cat to try again.",
+      "night": "Good night. The moon is back at the window.",
+      "day": "Good morning. Sunshine is filling the studio.",
+      "themeError": "Daytime couldn't load. Try switching the theme again.",
+      "soundError": "Sound couldn't be enabled. Please try again."
+    }
+  },
+  "journey": {
+    "eyebrow": "02 / JOURNEY",
+    "title": "My",
+    "titleAccent": "journey.",
+    "subtitle": "Experiences that shaped the way I create.",
+    "period": "2019 — TODAY",
+    "stages": "Journey chapters",
+    "selectStage": "Select a chapter of the journey.",
+    "deliveries": "Key contributions",
+    "learnings": "What I learned",
+    "stage": "Journey chapter",
+    "chapter": "Chapter {{current}} of {{total}}: {{title}}",
+    "next": "Next chapter",
+    "steps": [
+      {
+        "id": "consultoria-digital",
+        "title": "Consultoria Digital",
+        "period": "2019 — 2020",
+        "detailedPeriod": "Jan. 2019 — May 2020",
+        "category": "Agency and digital marketing",
+        "role": "Front-end Developer",
+        "description": "My first professional experience, building and maintaining websites for clients at a digital marketing agency, with a focus on responsive design and SEO.",
+        "deliveries": [
+          {
+            "title": "Websites and landing pages",
+            "description": "Built and maintained responsive pages for a range of clients."
+          },
+          {
+            "title": "WordPress and Magento",
+            "description": "Maintained and improved business websites and online stores on these platforms."
+          },
+          {
+            "title": "SEO and integrations",
+            "description": "Improved organic search performance and connected interfaces with web applications."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Web fundamentals",
+            "description": "Applied HTML, CSS and JavaScript to build interfaces."
+          },
+          {
+            "title": "Technical breadth",
+            "description": "Worked with Angular, PHP, Node.js, MySQL and applications built around MVC architecture."
+          },
+          {
+            "title": "Business context",
+            "description": "Adapted to different clients, SEO requirements and system maintenance needs."
+          }
+        ],
+        "technologies": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "PHP",
+          "Angular",
+          "WordPress",
+          "Magento"
+        ]
+      },
+      {
+        "id": "doris-mobi",
+        "title": "Doris.mobi",
+        "period": "2020 — 2021",
+        "detailedPeriod": "July 2020 — May 2021",
+        "category": "Software quality",
+        "role": "Software Test and QA Analyst",
+        "description": "A chapter focused on digital product quality, with manual and automated JavaScript testing and validation of new features.",
+        "deliveries": [
+          {
+            "title": "Automated testing",
+            "description": "Wrote and ran JavaScript tests to validate features."
+          },
+          {
+            "title": "Functional testing",
+            "description": "Manually checked workflows, product behavior and usability."
+          },
+          {
+            "title": "Failure analysis",
+            "description": "Identified and documented bugs to support fixes and improvements."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Hands-on JavaScript",
+            "description": "Deepened my JavaScript knowledge through automated test development."
+          },
+          {
+            "title": "A quality mindset",
+            "description": "Paid close attention to error scenarios and the expected behavior of each feature."
+          },
+          {
+            "title": "Team collaboration",
+            "description": "Communicated issues and tracked fixes within an agile workflow."
+          }
+        ],
+        "technologies": [
+          "JavaScript",
+          "Manual testing",
+          "Automated testing",
+          "Functional testing"
+        ]
+      },
+      {
+        "id": "direcao-concursos",
+        "title": "Direção Concursos",
+        "period": "2021 — 2022",
+        "detailedPeriod": "Aug. 2021 — Dec. 2022",
+        "category": "Education and e-commerce",
+        "role": "Full-stack Developer",
+        "description": "Returned to development, working on the front end and back end of an online store and a learning platform with React, TypeScript and Node.js.",
+        "deliveries": [
+          {
+            "title": "Learning platform",
+            "description": "Built interfaces and features for accessing lessons and learning materials."
+          },
+          {
+            "title": "E-commerce and subscriptions",
+            "description": "Implemented and maintained purchase, checkout and subscription flows."
+          },
+          {
+            "title": "APIs and business logic",
+            "description": "Built and integrated REST APIs with Node.js, Express and MongoDB."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "A full-stack perspective",
+            "description": "Understood the flow between the interface, APIs, business logic and database."
+          },
+          {
+            "title": "State and structure",
+            "description": "Used Redux and TypeScript to evolve React and Next.js applications."
+          },
+          {
+            "title": "Product development",
+            "description": "Continuously improved educational and commercial products within a Scrum team."
+          }
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "Redux",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "Mongoose"
+        ]
+      },
+      {
+        "id": "hospital-einstein",
+        "title": "Hospital Israelita Albert Einstein",
+        "period": "2022 — 2025",
+        "detailedPeriod": "Dec. 2022 — Jan. 2025",
+        "category": "Healthcare and technology",
+        "role": "Front-end Developer",
+        "description": "Developed healthcare applications connecting medical forms, documents and video appointments, with attention to usability and sensitive data.",
+        "deliveries": [
+          {
+            "title": "Medical forms",
+            "description": "Built dynamic forms and validation with React Hook Form."
+          },
+          {
+            "title": "Documents and patient care",
+            "description": "Worked on reports, PDF uploads and video appointment integration with Vonage."
+          },
+          {
+            "title": "Automated testing",
+            "description": "Tested components and workflows with Jest, React Testing Library and Cypress."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Sensitive data",
+            "description": "Handled health information carefully and followed application security requirements."
+          },
+          {
+            "title": "Design system and usability",
+            "description": "Maintained standards, reusable components and accessible interfaces."
+          },
+          {
+            "title": "Collaboration and troubleshooting",
+            "description": "Worked with product and QA teams, analyzed logs and used AWS and Datadog."
+          }
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "React Hook Form",
+          "Tailwind CSS",
+          "Styled Components",
+          "Context API",
+          "Jest",
+          "Cypress"
+        ]
+      },
+      {
+        "id": "intercambio-irlanda",
+        "title": "Studying abroad in Ireland",
+        "period": "2025 — 2026",
+        "detailedPeriod": "2025 — Feb. 2026",
+        "category": "Study abroad and personal growth",
+        "role": "English Student",
+        "description": "Took a break from software development to study English and live in Ireland, immersing myself in a new culture and using the language every day.",
+        "deliveries": [
+          {
+            "title": "English studies",
+            "description": "Attended classes at Berlitz in Dublin and practiced English outside the classroom."
+          },
+          {
+            "title": "Life abroad",
+            "description": "Studied and worked in Ireland, using English in real-life situations."
+          },
+          {
+            "title": "Cultural immersion",
+            "description": "Met people from different countries and adapted to life abroad."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Communication in English",
+            "description": "Improved listening comprehension and speaking skills in everyday situations."
+          },
+          {
+            "title": "Independence",
+            "description": "Managed my routine and responsibilities while living and working abroad."
+          },
+          {
+            "title": "Adaptability",
+            "description": "Learned to adapt to cultural differences and unfamiliar situations."
+          }
+        ],
+        "technologies": [
+          "English",
+          "Communication",
+          "Independence",
+          "Cultural adaptation"
+        ]
+      },
+      {
+        "id": "freelance",
+        "title": "Freelance and learning",
+        "period": "2026 — present",
+        "category": "Freelance and technical learning",
+        "role": "Front-end Developer",
+        "description": "After returning to Brazil, I took on freelance projects and continued learning, refreshing my skills and deepening my knowledge of artificial intelligence.",
+        "deliveries": [
+          {
+            "title": "Websites and maintenance",
+            "description": "Freelance WordPress work, adjusting themes and pages and fixing issues."
+          },
+          {
+            "title": "E-commerce",
+            "description": "Worked on VTEX IO and Shopify projects, including landing pages, storefronts and tag analysis."
+          },
+          {
+            "title": "Personal projects",
+            "description": "Developed FormLab and Pokédex further to put my learning into practice."
+          }
+        ],
+        "learnings": [
+          {
+            "title": "Front-end learning",
+            "description": "Reviewed React, TypeScript and Next.js and practiced Angular, RxJS and Signals."
+          },
+          {
+            "title": "Back end and services",
+            "description": "Studied and practiced Node.js, NestJS, Java/Spring and AWS fundamentals."
+          },
+          {
+            "title": "Artificial intelligence",
+            "description": "Studied LLMs, RAG, MCP and fine-tuning, with plans to apply RAG to team analysis."
+          }
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "WordPress",
+          "VTEX IO",
+          "Shopify",
+          "Node.js",
+          "Generative AI"
+        ]
+      }
+    ]
+  },
+  "common": {
+    "technologies": "Technologies",
+    "technologiesLabel": "Technologies used",
+    "pagination": "{{current}} of {{total}}",
+    "previous": "Previous",
+    "comingSoon": "Coming soon",
+    "unavailableLabel": "{{label}} — coming soon",
+    "externalLabel": "{{label}} (opens in a new tab)"
+  },
+  "projects": {
+    "eyebrow": "03 / PROJECTS",
+    "title": "Selected",
+    "titleAccent": "projects.",
+    "subtitle": "Ideas brought to life on the web.",
+    "archive": "DIGITAL ARCHIVE / 2026",
+    "tapeStatus": "{{title}}. {{state}}. Tape {{current}} of {{total}}.",
+    "ejected": "Tape ejected. Select or drag another tape into the player.",
+    "chooseTape": "CHOOSE A TAPE",
+    "previous": "Previous project",
+    "next": "Next project",
+    "tapesLabel": "Project tapes",
+    "playTape": "Play {{title}} tape",
+    "loadTape": "Load {{title}} tape",
+    "loaded": "IN THE PLAYER",
+    "pointerHint": "Drag a tape into the player or click to play.",
+    "touchHint": "Tap to play. Swipe to browse tapes or drag one into the player.",
+    "keyboardHint": "Use Tab and Enter to select. Escape cancels dragging.",
+    "collection": "ONE TAPE, ONE STORY.",
+    "emptyEyebrow": "THE NEXT PLAY IS YOURS",
+    "emptyTitle": "One tape.",
+    "emptyAccent": "A new story.",
+    "emptyDescription": "Drag a project into the player or select a tape below to explore.",
+    "technologies": "TECHNOLOGIES",
+    "visit": "Visit site",
+    "external": "for {{title}} (opens in a new tab)",
+    "siteSoon": "Site coming soon",
+    "codeSoon": "Code coming soon",
+    "playerLabel": "VHS player: drop a tape here",
+    "tape": "TAPE",
+    "emptyScreen": "PRESS PLAY",
+    "emptyScreenAccent": "ON THE NEXT IDEA.",
+    "insert": "INSERT A TAPE TO START",
+    "loadingTape": "▶ LOADING TAPE {{number}}",
+    "insertSlot": "VHS · INSERT TAPE",
+    "play": "Play presentation",
+    "pause": "Pause presentation",
+    "eject": "Eject tape",
+    "drop": "DROP TO PLAY",
+    "drag": "DRAG INTO THE PLAYER",
+    "previewAlt": "Preview of {{title}}",
+    "previewLabel": "Demo preview of {{title}}",
+    "previewSoon": "Preview coming soon",
+    "playback": {
+      "playing": "Now playing",
+      "paused": "Paused",
+      "loading": "Loading tape",
+      "empty": "Waiting for a tape"
+    },
+    "items": {
+      "formlab": {
+        "title": "FormLab",
+        "category": "E-commerce / Personal project",
+        "description": "Fashion, identity and a shopping experience with care in every detail.",
+        "tapeLabel": "STREETWEAR / WEB",
+        "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+        "features": [
+          {
+            "title": "Catalog and filters",
+            "description": "Find products with ease."
+          },
+          {
+            "title": "Responsive interface",
+            "description": "One experience across all devices."
+          }
+        ]
+      },
+      "pokedex": {
+        "title": "Pokédex",
+        "category": "Web app / Personal project",
+        "description": "A world of discoveries, with fast search and carefully organized information.",
+        "tapeLabel": "REACT + TYPESCRIPT",
+        "technologies": ["React", "TypeScript", "REST API"],
+        "features": [
+          {
+            "title": "Search and discovery",
+            "description": "Explore the collection by name or type."
+          },
+          {
+            "title": "Everything in its place",
+            "description": "Details organized in a clear interface."
+          }
+        ]
+      },
+      "taskflow": {
+        "title": "TaskFlow",
+        "category": "Productivity / In development",
+        "description": "Less noise, more focus. A space to organize ideas and keep track of what's next.",
+        "tapeLabel": "KANBAN / IN DEVELOPMENT",
+        "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+        "features": [
+          {
+            "title": "Task boards",
+            "description": "See every stage of your work."
+          },
+          {
+            "title": "Your workflow, on any screen",
+            "description": "Organization that fits your routine."
+          }
+        ]
+      }
+    },
+    "display": {
+      "empty": "NO TAPE",
+      "loading": "LOAD",
+      "paused": "PAUSE {{number}}",
+      "playing": "PLAY {{number}}",
+      "pauseBadge": "PAUSE",
+      "stereo": "HI-FI STEREO",
+      "preview": "{{title}} / preview",
+      "standby": "has video / standby"
+    }
+  },
+  "contact": {
+    "eyebrow": "04 / CONTACT",
+    "finalCredits": "CLOSING CREDITS",
+    "creditsLabel": "Portfolio credits",
+    "creation": "DESIGN & CODE",
+    "locationLabel": "LOCATION",
+    "location": "São Paulo, Brazil",
+    "editionLabel": "EDITION",
+    "edition": "Portfolio {{year}}",
+    "backToTop": "Back to top",
+    "title": "Let's create",
+    "titleAccent": "together.",
+    "description": "Have an idea, a project or",
+    "descriptionEnd": "an opportunity? Let's talk.",
+    "email": "Send an email",
+    "resume": "Download résumé",
+    "socials": "Social profiles"
+  },
+  "previews": {
+    "store": {
+      "nav": "Home　 Shop　 Collections　 About",
+      "eyebrow": "STREETWEAR / CULTURE / EXPRESSION",
+      "title1": "WEAR",
+      "title2": "WHAT",
+      "title3": "MOVES YOU.",
+      "description": "Clothes that connect",
+      "descriptionEnd": "style, culture and purpose.",
+      "collection": "View collection ↗",
+      "latest": "New arrivals",
+      "all": "View all →",
+      "tokyo": "Tokyo T-shirt",
+      "fuji": "Fuji T-shirt",
+      "kuro": "Kuro T-shirt",
+      "sakura": "Sakura T-shirt",
+      "edition": "NEW DROP / 2026"
+    },
+    "pokedex": {
+      "tagline": "EXPLORE. DISCOVER. COLLECT.",
+      "eyebrow": "YOUR DISCOVERY GUIDE",
+      "title": "Who's your",
+      "titleEnd": "next favorite?",
+      "description": "An entire universe to explore.",
+      "placeholder": "Search by name or number",
+      "search": "Search",
+      "grass": "GRASS",
+      "fire": "FIRE",
+      "water": "WATER"
+    },
+    "kanban": {
+      "projects": "▦　My projects",
+      "overview": "◇　Overview",
+      "tasks": "☷　My tasks",
+      "calendar": "◷　Calendar",
+      "newProject": "+ New project",
+      "breadcrumb": "WORKSPACE / PROJECTS",
+      "title": "Ideas in motion.",
+      "description": "A space for your next big project.",
+      "todo": "To do",
+      "references": "Explore references",
+      "components": "Plan components",
+      "typography": "Choose typography",
+      "inProgress": "In progress",
+      "interface": "Build the interface",
+      "responsive": "Refine responsiveness",
+      "done": "Done",
+      "organize": "Organize the project",
+      "palette": "Choose the palette",
+      "development": "DEVELOPMENT",
+      "detail": "One detail at a time.",
+      "workspace": "WORKSPACE",
+      "design": "DESIGN"
+    }
+  },
+  "meta": {
+    "title": "Pedro HAS — Front-end Developer",
+    "description": "Projects, experiences and ideas by Pedro Andrade. Distinctive interfaces with care in every interaction."
+  }
+}
