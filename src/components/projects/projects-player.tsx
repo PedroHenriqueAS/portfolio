@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { formatSequenceNumber } from "@/utils/format-sequence-number";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -7,12 +9,14 @@ import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import Cassette from "./cassette";
 import ProjectDetails from "./project-details";
 import ProjectPlayerStage from "./project-player-stage";
-import { projects } from "./projects-data";
+import { getProjects } from "./projects-data";
 import { PLAYBACK_LABELS, useProjectPlayback } from "./use-project-playback";
 import { useTapeDrag } from "./use-tape-drag";
 import styles from "./projects.module.css";
 
 export default function ProjectsPlayer() {
+  const { t } = useTranslation();
+  const projects = getProjects(t);
   const reducedMotion = Boolean(useReducedMotion());
   const {
     loadedId,
@@ -30,14 +34,19 @@ export default function ProjectsPlayer() {
   const draggedProject = projects.find(
     (item) => item.id === dragging?.projectId,
   );
-  const stateLabel = PLAYBACK_LABELS[playback];
+  const stateLabel = t(PLAYBACK_LABELS[playback]);
 
   return (
     <div className={styles.experience}>
       <p className="sr-only" role="status">
         {project
-          ? `${project.title}. ${stateLabel}. Fita ${activeIndex + 1} de ${projects.length}.`
-          : "Fita ejetada. Selecione ou arraste outra fita para o tocador."}
+          ? t("projects.tapeStatus", {
+              title: project.title,
+              state: stateLabel,
+              current: activeIndex + 1,
+              total: projects.length,
+            })
+          : t("projects.ejected")}
       </p>
       <div className={styles.showcase}>
         <span className={styles.cornerTopLeft} aria-hidden="true" />
@@ -70,7 +79,7 @@ export default function ProjectsPlayer() {
       </div>
 
       <div className={styles.shelfHeading}>
-        <h3 className={styles.eyebrow}>ESCOLHA UMA FITA</h3>
+        <h3 className={styles.eyebrow}>{t("projects.chooseTape")}</h3>
         <div>
           <span>
             {project ? formatSequenceNumber(activeIndex + 1) : "--"} /{" "}
@@ -80,7 +89,7 @@ export default function ProjectsPlayer() {
             type="button"
             onClick={() => navigate(-1)}
             disabled={!projects.length}
-            aria-label="Projeto anterior"
+            aria-label={t("projects.previous")}
           >
             <ChevronLeft size={18} aria-hidden="true" />
           </button>
@@ -88,7 +97,7 @@ export default function ProjectsPlayer() {
             type="button"
             onClick={() => navigate(1)}
             disabled={!projects.length}
-            aria-label="Próximo projeto"
+            aria-label={t("projects.next")}
           >
             <ChevronRight size={18} aria-hidden="true" />
           </button>
@@ -98,7 +107,7 @@ export default function ProjectsPlayer() {
         ref={shelfRef}
         className={styles.shelf}
         role="group"
-        aria-label="Fitas de projetos"
+        aria-label={t("projects.tapesLabel")}
       >
         {projects.map((item, index) => {
           const isLoaded = item.id === loadedId;
@@ -107,7 +116,10 @@ export default function ProjectsPlayer() {
               key={item.id}
               type="button"
               draggable={false}
-              aria-label={`${isLoaded ? "Reproduzir" : "Carregar"} fita ${item.title}`}
+              aria-label={t(
+                isLoaded ? "projects.playTape" : "projects.loadTape",
+                { title: item.title },
+              )}
               aria-pressed={isLoaded}
               aria-describedby="tape-instructions"
               data-tape-id={item.id}
@@ -121,7 +133,7 @@ export default function ProjectsPlayer() {
                     <Play size={16} />
                   </span>
                   <strong>{item.title}</strong>
-                  <small>NO APARELHO</small>
+                  <small>{t("projects.loaded")}</small>
                 </span>
               )}
             </button>
@@ -131,23 +143,21 @@ export default function ProjectsPlayer() {
       <div className={styles.shelfFooter}>
         <p id="tape-instructions">
           <span className={styles.pointerInstructions}>
-            Arraste uma fita até o aparelho ou clique para reproduzir.
+            {t("projects.pointerHint")}
           </span>
           <span className={styles.touchInstructions}>
-            Toque para reproduzir. Deslize para ver as fitas ou arraste até o
-            tocador.
+            {t("projects.touchHint")}
           </span>
-          <span className="sr-only">
-            {" "}
-            Use Tab e Enter para selecionar. Escape cancela o arraste.
-          </span>
+          <span className="sr-only"> {t("projects.keyboardHint")} </span>
         </p>
         <div className={styles.pagination} aria-hidden="true">
           {projects.map((item) => (
             <span key={item.id} data-active={item.id === loadedId} />
           ))}
         </div>
-        <span className={styles.collectionLabel}>UMA FITA, UMA HISTÓRIA.</span>
+        <span className={styles.collectionLabel}>
+          {t("projects.collection")}
+        </span>
       </div>
 
       {dragging &&

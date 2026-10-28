@@ -1,8 +1,13 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
+
 import { instrumentSerif, inter } from "@/utils/fonts";
 import ProjectsPlayer from "./projects-player";
 import styles from "./projects.module.css";
 
 export default function ProjectsSection() {
+  const { t } = useTranslation();
   return (
     <section
       id="projetos"
@@ -10,14 +15,16 @@ export default function ProjectsSection() {
       className={styles.section}
     >
       <header className={styles.sectionHeader}>
-        <p className={styles.eyebrow}>03 / PROJETOS</p>
+        <p className={styles.eyebrow}>{t("projects.eyebrow")}</p>
         <h2 id="projects-heading" className={styles.heading}>
-          <span className={inter.className}>Projetos </span>
-          <span className={instrumentSerif.className}>selecionados.</span>
+          <span className={inter.className}>{t("projects.title")} </span>
+          <span className={instrumentSerif.className}>
+            {t("projects.titleAccent")}
+          </span>
         </h2>
         <div className={styles.headerBottom}>
-          <p>Ideias que ganharam vida na web.</p>
-          <span>ACERVO DIGITAL / 2026</span>
+          <p>{t("projects.subtitle")}</p>
+          <span>{t("projects.archive")}</span>
         </div>
       </header>
       <ProjectsPlayer />

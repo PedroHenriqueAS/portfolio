@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import { formatSequenceNumber } from "@/utils/format-sequence-number";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { JourneyStep } from "./journey-data";
@@ -25,6 +27,7 @@ export default function JourneyPanel({
   id,
   labelledBy,
 }: JourneyPanelProps) {
+  const { t } = useTranslation();
   const reducedMotion = useReducedMotion();
   const chapter = formatSequenceNumber(activeIndex + 1);
   const chapters = formatSequenceNumber(total);
@@ -35,13 +38,13 @@ export default function JourneyPanel({
       role="tabpanel"
       aria-labelledby={labelledBy}
       tabIndex={0}
-      className="@container relative min-w-0 overflow-hidden rounded-2xl border border-[#c5b1ff]/20 bg-[radial-gradient(ellipse_at_top_right,rgba(147,51,234,0.07),transparent_65%)] p-5 text-[#f5f1ff] [overflow-wrap:anywhere] outline-none focus-visible:ring-2 focus-visible:ring-[#c5b1ff] focus-visible:ring-offset-4 focus-visible:ring-offset-[#100d18] sm:p-8 lg:p-7 xl:p-8"
+      className="@container relative min-w-0 overflow-hidden rounded-2xl border border-[var(--accent)]/20 bg-[var(--surface)] p-5 text-[var(--foreground)] [overflow-wrap:anywhere] outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--background)] sm:p-8 lg:p-7 xl:p-8"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-3">
-        <span className="absolute top-0 left-0 size-3 rounded-tl border-t border-l border-[#bd79ff]" />
-        <span className="absolute top-0 right-0 size-3 rounded-tr border-t border-r border-[#bd79ff]" />
-        <span className="absolute bottom-0 left-0 size-3 rounded-bl border-b border-l border-[#bd79ff]" />
-        <span className="absolute right-0 bottom-0 size-3 rounded-br border-r border-b border-[#bd79ff]" />
+        <span className="absolute top-0 left-0 size-3 rounded-tl border-t border-l border-[var(--accent)]" />
+        <span className="absolute top-0 right-0 size-3 rounded-tr border-t border-r border-[var(--accent)]" />
+        <span className="absolute bottom-0 left-0 size-3 rounded-bl border-b border-l border-[var(--accent)]" />
+        <span className="absolute right-0 bottom-0 size-3 rounded-br border-r border-b border-[var(--accent)]" />
       </div>
 
       <AnimatePresence initial={false}>
@@ -58,14 +61,14 @@ export default function JourneyPanel({
         >
           <header className="flex min-w-0 flex-col gap-4 @min-[38rem]:flex-row @min-[38rem]:items-start @min-[38rem]:justify-between @min-[38rem]:gap-6">
             <div className="min-w-0">
-              <h3 className="text-2xl leading-tight font-bold tracking-[-0.035em] text-[#f5f1ff] sm:text-3xl xl:text-4xl">
+              <h3 className="text-2xl leading-tight font-bold tracking-[-0.035em] text-[var(--foreground)] sm:text-3xl xl:text-4xl">
                 {step.role}
               </h3>
-              <p className="mt-1.5 text-lg leading-snug font-medium text-[#c391fa] sm:text-xl xl:text-2xl">
+              <p className="mt-1.5 text-lg leading-snug font-medium text-[var(--accent)] sm:text-xl xl:text-2xl">
                 {step.title}
               </p>
             </div>
-            <div className="min-w-0 text-[#c5b1ff] @min-[38rem]:shrink-0 @min-[38rem]:pt-1 @min-[38rem]:text-right">
+            <div className="min-w-0 text-[var(--accent)] @min-[38rem]:shrink-0 @min-[38rem]:pt-1 @min-[38rem]:text-right">
               <p className="font-mono text-[10px] leading-relaxed tracking-[0.15em] uppercase sm:text-xs">
                 {step.detailedPeriod ?? step.period}
               </p>
@@ -73,29 +76,29 @@ export default function JourneyPanel({
             </div>
           </header>
 
-          <p className="mt-4 text-sm leading-relaxed text-[#ded5ee] sm:text-base xl:text-lg">
+          <p className="mt-4 text-sm leading-relaxed text-[var(--text-soft)] sm:text-base xl:text-lg">
             {step.description}
           </p>
 
-          <div className="mt-5 grid min-w-0 grid-cols-1 gap-5 border-y border-[#c5b1ff]/20 py-5 @min-[32rem]:grid-cols-2 @min-[32rem]:gap-6 xl:gap-8">
+          <div className="mt-5 grid min-w-0 grid-cols-1 gap-5 border-y border-[var(--accent)]/20 py-5 @min-[32rem]:grid-cols-2 @min-[32rem]:gap-6 xl:gap-8">
             {[
-              { title: "Principais entregas", items: step.deliveries },
-              { title: "Aprendizados", items: step.learnings },
+              { title: t("journey.deliveries"), items: step.deliveries },
+              { title: t("journey.learnings"), items: step.learnings },
             ].map((group, index) => (
               <section
                 key={group.title}
-                className={`min-w-0 ${index === 1 ? "border-t border-[#c5b1ff]/20 pt-5 @min-[32rem]:border-t-0 @min-[32rem]:border-l @min-[32rem]:pt-0 @min-[32rem]:pl-6 xl:pl-8" : ""}`}
+                className={`min-w-0 ${index === 1 ? "border-t border-[var(--accent)]/20 pt-5 @min-[32rem]:border-t-0 @min-[32rem]:border-l @min-[32rem]:pt-0 @min-[32rem]:pl-6 xl:pl-8" : ""}`}
               >
-                <h4 className="font-mono text-[10px] tracking-[0.18em] text-[#c99cfa] uppercase sm:text-xs">
+                <h4 className="font-mono text-[10px] tracking-[0.18em] text-[var(--accent)] uppercase sm:text-xs">
                   {group.title}
                 </h4>
                 <ul className="mt-3 space-y-4">
                   {group.items.map((item) => (
                     <li key={item.title}>
-                      <h5 className="text-base leading-snug font-semibold text-[#f5f1ff] sm:text-lg">
+                      <h5 className="text-base leading-snug font-semibold text-[var(--foreground)] sm:text-lg">
                         {item.title}
                       </h5>
-                      <p className="mt-0.5 text-sm leading-relaxed text-[#d4c7e9] sm:text-base">
+                      <p className="mt-0.5 text-sm leading-relaxed text-[var(--text-soft)] sm:text-base">
                         {item.description}
                       </p>
                     </li>
@@ -106,17 +109,17 @@ export default function JourneyPanel({
           </div>
 
           <section className="pt-4">
-            <h4 className="font-mono text-[10px] tracking-[0.18em] text-[#c99cfa] uppercase sm:text-xs">
-              Tecnologias
+            <h4 className="font-mono text-[10px] tracking-[0.18em] text-[var(--accent)] uppercase sm:text-xs">
+              {t("common.technologies")}
             </h4>
             <ul
-              aria-label="Tecnologias utilizadas"
+              aria-label={t("common.technologiesLabel")}
               className="mt-3 flex flex-wrap gap-2.5"
             >
               {step.technologies.map((technology) => (
                 <li
                   key={technology}
-                  className="rounded-full border border-[#c5b1ff]/70 px-4 py-1.5 text-xs leading-normal text-[#e6daf9]"
+                  className="rounded-full border border-[var(--accent)]/70 px-4 py-1.5 text-xs leading-normal text-[var(--text-soft)]"
                 >
                   {technology}
                 </li>
@@ -126,29 +129,33 @@ export default function JourneyPanel({
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-5 border-t border-[#c5b1ff]/20 pt-4">
+      <div className="relative z-10 mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-5 border-t border-[var(--accent)]/20 pt-4">
         <div
           role="progressbar"
-          aria-label="Etapa da jornada"
+          aria-label={t("journey.stage")}
           aria-valuemin={1}
           aria-valuemax={total}
           aria-valuenow={activeIndex + 1}
-          aria-valuetext={`Capítulo ${activeIndex + 1} de ${total}: ${step.title}`}
+          aria-valuetext={t("journey.chapter", {
+            current: activeIndex + 1,
+            total,
+            title: step.title,
+          })}
           className="flex min-w-0 items-center gap-3"
         >
           <div aria-hidden="true" className="flex gap-1.5">
             {Array.from({ length: total }, (_, index) => (
               <span
                 key={index}
-                className={`h-1.5 w-5 rounded-full transition-colors duration-300 motion-reduce:transition-none sm:w-6 ${index <= activeIndex ? "bg-[#9333ea]" : "bg-[#c5b1ff]/20"}`}
+                className={`h-1.5 w-5 rounded-full transition-colors duration-300 motion-reduce:transition-none sm:w-6 ${index <= activeIndex ? "bg-[var(--accent-strong)]" : "bg-[var(--accent)]/20"}`}
               />
             ))}
           </div>
           <span
             aria-hidden="true"
-            className="shrink-0 font-mono text-[11px] text-[#c5b1ff]"
+            className="shrink-0 font-mono text-[11px] text-[var(--accent)]"
           >
-            {chapter} de {chapters}
+            {t("common.pagination", { current: chapter, total: chapters })}
           </span>
         </div>
 
@@ -157,17 +164,17 @@ export default function JourneyPanel({
             type="button"
             onClick={onPrevious}
             disabled={activeIndex === 0}
-            className="min-h-11 cursor-pointer rounded-xl border border-[#c5b1ff]/70 px-4 text-xs font-medium text-[#e6daf9] transition-colors hover:border-[#c5b1ff] hover:bg-[#c5b1ff]/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c5b1ff] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent motion-reduce:transition-none sm:px-5 sm:text-sm"
+            className="min-h-11 cursor-pointer rounded-xl border border-[var(--accent)]/70 px-4 text-xs font-medium text-[var(--text-soft)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent)]/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent motion-reduce:transition-none sm:px-5 sm:text-sm"
           >
-            Anterior
+            {t("common.previous")}
           </button>
           <button
             type="button"
             onClick={onNext}
             disabled={activeIndex === total - 1}
-            className="min-h-11 cursor-pointer rounded-xl border border-[#ac5df2] bg-[#8b2ce8] px-4 text-xs font-medium text-white transition-colors hover:bg-[#9e46ef] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c5b1ff] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#8b2ce8] motion-reduce:transition-none sm:px-5 sm:text-sm"
+            className="min-h-11 cursor-pointer rounded-xl border border-[var(--accent-strong)] bg-[var(--button-start)] px-4 text-xs font-medium text-[var(--on-accent)] transition-colors hover:bg-[var(--button-end)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[var(--button-start)] motion-reduce:transition-none sm:px-5 sm:text-sm"
           >
-            Próxima etapa
+            {t("journey.next")}
           </button>
         </div>
       </div>

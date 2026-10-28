@@ -1,3 +1,5 @@
+import type { TFunction } from "i18next";
+
 export type PortfolioProject = {
   id: string;
   title: string;
@@ -18,77 +20,52 @@ export type PortfolioProject = {
   technologies: string[];
 };
 
-// Dados demonstrativos. Adicione os links e uma imagem em /public ao cadastrar cada projeto.
-// previewImage: "/projects/meu-projeto.png", siteUrl: "https://...", githubUrl: "https://github.com/..."
-export const projects: PortfolioProject[] = [
+type ProjectDefinition = Pick<
+  PortfolioProject,
+  | "id"
+  | "accent"
+  | "preview"
+  | "previewImage"
+  | "siteUrl"
+  | "githubUrl"
+  | "inDevelopment"
+> & {
+  featureIcons: readonly PortfolioProject["features"][number]["icon"][];
+};
+
+// Links and artwork stay here; localized copy lives in i18n/locales.
+const projectDefinitions = [
   {
     id: "formlab",
-    title: "FormLab",
-    category: "E-commerce / Projeto pessoal",
-    description:
-      "Moda, identidade e uma experiência de compra com atenção aos detalhes.",
-    tapeLabel: "STREETWEAR / WEB",
     accent: "#c792ff",
     preview: "store",
-    features: [
-      {
-        icon: "shopping",
-        title: "Catálogo e filtros",
-        description: "Encontre produtos com facilidade.",
-      },
-      {
-        icon: "mobile",
-        title: "Interface responsiva",
-        description: "Uma experiência em todos os dispositivos.",
-      },
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    featureIcons: ["shopping", "mobile"],
   },
   {
     id: "pokedex",
-    title: "Pokédex",
-    category: "Web app / Projeto pessoal",
-    description:
-      "Um universo de descobertas, com busca rápida e informações organizadas em cada detalhe.",
-    tapeLabel: "REACT + TYPESCRIPT",
     accent: "#bda5ff",
     preview: "pokedex",
-    features: [
-      {
-        icon: "search",
-        title: "Busca e descoberta",
-        description: "Explore a coleção por nome ou tipo.",
-      },
-      {
-        icon: "layers",
-        title: "Tudo no seu lugar",
-        description: "Características organizadas em uma interface clara.",
-      },
-    ],
-    technologies: ["React", "TypeScript", "API REST"],
+    featureIcons: ["search", "layers"],
   },
   {
     id: "taskflow",
-    title: "TaskFlow",
-    category: "Produtividade / Em desenvolvimento",
-    description:
-      "Menos ruído, mais foco. Um espaço para organizar ideias e acompanhar o que vem a seguir.",
-    tapeLabel: "KANBAN / EM DESENVOLVIMENTO",
     accent: "#b99cf0",
     preview: "kanban",
     inDevelopment: true,
-    features: [
-      {
-        icon: "layers",
-        title: "Quadros de tarefas",
-        description: "Visualize cada etapa do seu trabalho.",
-      },
-      {
-        icon: "mobile",
-        title: "Seu fluxo, em qualquer tela",
-        description: "Uma organização que acompanha sua rotina.",
-      },
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    featureIcons: ["layers", "mobile"],
   },
-];
+] as const satisfies readonly ProjectDefinition[];
+
+export function getProjects(t: TFunction): PortfolioProject[] {
+  return projectDefinitions.map(({ featureIcons, ...definition }) => {
+    const copy = t(`projects.items.${definition.id}`, { returnObjects: true });
+    return {
+      ...definition,
+      ...copy,
+      features: copy.features.map((feature, index) => ({
+        ...feature,
+        icon: featureIcons[index],
+      })),
+    };
+  });
+}

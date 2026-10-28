@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
+
 import { ShoppingBag } from "lucide-react";
 import styles from "./previews.module.css";
 
@@ -47,31 +51,30 @@ function Shirt({ light = false }: { light?: boolean }) {
 }
 
 export default function StorePreview() {
+  const { t } = useTranslation();
   return (
     <div className={styles.storePreview}>
       <div className={styles.storeNav}>
         <strong>
           FormLab<span>●</span>
         </strong>
-        <span>Início　 Loja　 Coleções　 Sobre</span>
+        <span>{t("previews.store.nav")}</span>
         <ShoppingBag />
       </div>
       <div className={styles.storeHero}>
         <div className={styles.storeCopy}>
-          <small>STREETWEAR / CULTURA / EXPRESSÃO</small>
+          <small>{t("previews.store.eyebrow")}</small>
           <strong>
-            VISTA
-            <br />O QUE
-            <br />
-            TE MOVE.
+            {t("previews.store.title1")} <br />
+            {t("previews.store.title2")} <br />
+            {t("previews.store.title3")}
           </strong>
           <span>着る理由</span>
           <p>
-            Roupas que conectam
-            <br />
-            estilo, cultura e propósito.
+            {t("previews.store.description")} <br />
+            {t("previews.store.descriptionEnd")}
           </p>
-          <b>Ver coleção ↗</b>
+          <b>{t("previews.store.collection")}</b>
         </div>
         <div className={styles.whiteShirt}>
           <Shirt light />
@@ -79,18 +82,20 @@ export default function StorePreview() {
         <div className={styles.blackShirt}>
           <Shirt />
         </div>
-        <span className={styles.storeEdition}>NEW DROP / 2026</span>
+        <span className={styles.storeEdition}>
+          {t("previews.store.edition")}
+        </span>
       </div>
       <div className={styles.storeProducts}>
         <strong>
-          Novidades <span>Ver todos →</span>
+          {t("previews.store.latest")} <span>{t("previews.store.all")}</span>
         </strong>
         <div>
           {[
-            "Camiseta Tokyo",
-            "Camiseta Fuji",
-            "Camiseta Kuro",
-            "Camiseta Sakura",
+            t("previews.store.tokyo"),
+            t("previews.store.fuji"),
+            t("previews.store.kuro"),
+            t("previews.store.sakura"),
           ].map((name, i) => (
             <div key={name}>
               <Shirt light={i % 2 === 1} />

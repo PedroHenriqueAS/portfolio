@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
+
 import { formatSequenceNumber } from "@/utils/format-sequence-number";
 import type { RefObject } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -39,14 +43,12 @@ export default function ProjectPlayerStage({
   onTogglePlayback,
   onEject,
 }: ProjectPlayerStageProps) {
-  const stateLabel = PLAYBACK_LABELS[playback];
+  const { t } = useTranslation();
+  const stateLabel = t(PLAYBACK_LABELS[playback]);
   const tapeNumber = formatSequenceNumber(activeIndex + 1);
-  const displayLabel = {
-    empty: "NO TAPE",
-    loading: "LOAD",
-    paused: `PAUSE ${tapeNumber}`,
-    playing: `PLAY ${tapeNumber}`,
-  }[playback];
+  const displayLabel = t(`projects.display.${playback}`, {
+    number: tapeNumber,
+  });
 
   return (
     <div
@@ -54,7 +56,7 @@ export default function ProjectPlayerStage({
       className={`${styles.playerStage} ${isOverPlayer ? styles.dropActive : ""}`}
       data-player-drop-zone="true"
       role="group"
-      aria-label="Tocador VHS: solte uma fita aqui"
+      aria-label={t("projects.playerLabel")}
       aria-describedby="tape-instructions"
     >
       <div className={styles.playerMeta}>
@@ -66,7 +68,8 @@ export default function ProjectPlayerStage({
           {stateLabel}
         </span>
         <span>
-          FITA {project ? formatSequenceNumber(activeIndex + 1) : "--"} /{" "}
+          {t("projects.tape")}{" "}
+          {project ? formatSequenceNumber(activeIndex + 1) : "--"} /{" "}
           {formatSequenceNumber(total)}
         </span>
       </div>
@@ -77,8 +80,10 @@ export default function ProjectPlayerStage({
           <i />
           <span>
             {project
-              ? `${project.title.toLowerCase()} / preview`
-              : "has video / standby"}
+              ? t("projects.display.preview", {
+                  title: project.title.toLowerCase(),
+                })
+              : t("projects.display.standby")}
           </span>
         </div>
         <div className={styles.screenViewport} data-playback={playback}>
@@ -97,11 +102,10 @@ export default function ProjectPlayerStage({
               <div key="empty" className={styles.emptyScreen}>
                 <Tape aria-hidden="true" />
                 <strong>
-                  APERTE O PLAY
-                  <br />
-                  NA PRÓXIMA IDEIA.
+                  {t("projects.emptyScreen")} <br />
+                  {t("projects.emptyScreenAccent")}
                 </strong>
-                <span>INSIRA UMA FITA PARA COMEÇAR</span>
+                <span>{t("projects.insert")}</span>
               </div>
             )}
           </AnimatePresence>
@@ -109,14 +113,17 @@ export default function ProjectPlayerStage({
           {playback === "loading" && (
             <div className={styles.loadingScreen} aria-hidden="true">
               <span>
-                ▶ CARREGANDO FITA {formatSequenceNumber(activeIndex + 1)}
+                {t("projects.loadingTape", {
+                  number: formatSequenceNumber(activeIndex + 1),
+                })}
               </span>
               <div />
             </div>
           )}
           {playback === "paused" && (
             <span className={styles.pauseBadge}>
-              <Pause size={12} aria-hidden="true" /> PAUSE
+              <Pause size={12} aria-hidden="true" />{" "}
+              {t("projects.display.pauseBadge")}
             </span>
           )}
         </div>
@@ -125,10 +132,10 @@ export default function ProjectPlayerStage({
         <div className={styles.deckBrand} aria-hidden="true">
           <span>HAS / VIDEO</span>
           <i />
-          <small>HI-FI STEREO</small>
+          <small>{t("projects.display.stereo")}</small>
         </div>
         <div className={styles.tapeSlot} aria-hidden="true">
-          <span className={styles.slotLabel}>VHS · INSERT TAPE</span>
+          <span className={styles.slotLabel}>{t("projects.insertSlot")}</span>
           <AnimatePresence initial={false}>
             {project && (
               <motion.div
@@ -161,9 +168,7 @@ export default function ProjectPlayerStage({
             onClick={onTogglePlayback}
             disabled={!project || playback === "loading"}
             aria-label={
-              playback === "paused"
-                ? "Reproduzir apresentação"
-                : "Pausar apresentação"
+              playback === "paused" ? t("projects.play") : t("projects.pause")
             }
           >
             {playback === "playing" ? (
@@ -176,7 +181,7 @@ export default function ProjectPlayerStage({
             type="button"
             onClick={onEject}
             disabled={!project}
-            aria-label="Ejetar fita"
+            aria-label={t("projects.eject")}
           >
             <StepForward className={styles.ejectIcon} aria-hidden="true" />
           </button>
@@ -185,9 +190,7 @@ export default function ProjectPlayerStage({
       {isDragging && (
         <div className={styles.dropPrompt} aria-hidden="true">
           <CircleArrowDown />
-          <span>
-            {isOverPlayer ? "SOLTE PARA DAR PLAY" : "ARRASTE ATÉ O TOCADOR"}
-          </span>
+          <span>{isOverPlayer ? t("projects.drop") : t("projects.drag")}</span>
         </div>
       )}
     </div>

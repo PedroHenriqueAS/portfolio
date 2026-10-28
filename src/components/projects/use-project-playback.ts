@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import type { PortfolioProject } from "./projects-data";
 
 export const PLAYBACK_LABELS = {
-  playing: "Em exibição",
-  paused: "Pausado",
-  loading: "Carregando fita",
-  empty: "Aguardando uma fita",
-};
+  playing: "projects.playback.playing",
+  paused: "projects.playback.paused",
+  loading: "projects.playback.loading",
+  empty: "projects.playback.empty",
+} as const;
 export type Playback = keyof typeof PLAYBACK_LABELS;
 const TAPE_LOAD_DELAY_MS = 650;
 

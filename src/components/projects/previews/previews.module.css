@@ -8,12 +8,16 @@
   justify-content: center;
   gap: 12px;
   padding: 8%;
-  background: radial-gradient(ellipse at top right, #533575, #171023 70%);
-  color: #c5b1ff;
+  background: radial-gradient(
+    ellipse at top right,
+    var(--surface-raised),
+    var(--surface) 70%
+  );
+  color: var(--accent);
   overflow-wrap: anywhere;
 }
 .placeholder strong {
-  color: #f5f1ff;
+  color: var(--foreground);
   font-size: clamp(1.5rem, 4vw, 3rem);
   line-height: 1.1;
 }

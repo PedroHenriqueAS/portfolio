@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
+
 import Image from "next/image";
 import type { PortfolioProject } from "./projects-data";
 import StorePreview from "./previews/store-preview";
@@ -16,11 +20,12 @@ export default function ProjectPreview({
 }: {
   project: PortfolioProject;
 }) {
+  const { t } = useTranslation();
   if (project.previewImage) {
     return (
       <Image
         src={project.previewImage}
-        alt={`Prévia do projeto ${project.title}`}
+        alt={t("projects.previewAlt", { title: project.title })}
         fill
         sizes="(min-width: 1024px) 60vw, 100vw"
         className={styles.previewImage}
@@ -34,7 +39,7 @@ export default function ProjectPreview({
       <div className={styles.placeholder}>
         <span>{project.category}</span>
         <strong>{project.title}</strong>
-        <p>Prévia em breve</p>
+        <p>{t("projects.previewSoon")}</p>
       </div>
     );
   }
@@ -43,7 +48,7 @@ export default function ProjectPreview({
     <div
       className={styles.preview}
       role="img"
-      aria-label={`Prévia demonstrativa de ${project.title}`}
+      aria-label={t("projects.previewLabel", { title: project.title })}
     >
       <div aria-hidden="true">
         <Preview />
