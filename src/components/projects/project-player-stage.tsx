@@ -96,7 +96,10 @@ export default function ProjectPlayerStage({
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: reducedMotion ? 0 : 0.4 }}
               >
-                <ProjectPreview project={project} />
+                <ProjectPreview
+                  project={project}
+                  playing={playback === "playing" && !reducedMotion}
+                />
               </motion.div>
             ) : (
               <div key="empty" className={styles.emptyScreen}>

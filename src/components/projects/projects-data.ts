@@ -7,8 +7,13 @@ export type PortfolioProject = {
   description: string;
   tapeLabel: string;
   accent: string;
-  preview?: "store" | "pokedex" | "kanban";
+  preview?: "pokedex" | "kanban";
   previewImage?: string;
+  previewVideo?: {
+    mp4: string;
+    webm: string;
+    poster: string;
+  };
   siteUrl?: string;
   githubUrl?: string;
   inDevelopment?: boolean;
@@ -26,6 +31,7 @@ type ProjectDefinition = Pick<
   | "accent"
   | "preview"
   | "previewImage"
+  | "previewVideo"
   | "siteUrl"
   | "githubUrl"
   | "inDevelopment"
@@ -36,13 +42,20 @@ const projectDefinitions = [
   {
     id: "formlab",
     accent: "#c792ff",
-    preview: "store",
-    featureIcons: ["shopping", "mobile"],
+    previewVideo: {
+      mp4: "/projects/formlab-preview.mp4",
+      webm: "/projects/formlab-preview.webm",
+      poster: "/projects/formlab-poster.webp",
+    },
+    siteUrl: "https://formlab-eight.vercel.app",
+    githubUrl: "https://github.com/PedroHenriqueAS/formlab",
+    featureIcons: ["search", "shopping", "mobile"],
   },
   {
     id: "pokedex",
     accent: "#bda5ff",
     preview: "pokedex",
+    inDevelopment: true,
     featureIcons: ["search", "layers"],
   },
   {

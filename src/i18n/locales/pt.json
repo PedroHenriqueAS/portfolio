@@ -453,25 +453,36 @@
       "formlab": {
         "title": "FormLab",
         "category": "E-commerce / Projeto pessoal",
-        "description": "Moda, identidade e uma experiência de compra com atenção aos detalhes.",
-        "tapeLabel": "STREETWEAR / WEB",
-        "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+        "description": "Loja de camisetas com estampas inspiradas no Japão: catálogo com filtros, página de produto com galeria e carrinho de compras.",
+        "tapeLabel": "E-COMMERCE / NEXT.JS",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Zustand",
+          "shadcn/ui",
+          "Zod"
+        ],
         "features": [
           {
-            "title": "Catálogo e filtros",
-            "description": "Encontre produtos com facilidade."
+            "title": "Catálogo com filtros",
+            "description": "Categorias, tamanho, cor, preço e ordenação."
+          },
+          {
+            "title": "Carrinho de compras",
+            "description": "Escolha de tamanho e estado global com Zustand."
           },
           {
             "title": "Interface responsiva",
-            "description": "Uma experiência em todos os dispositivos."
+            "description": "Pensada para desktop e celular."
           }
         ]
       },
       "pokedex": {
         "title": "Pokédex",
-        "category": "Web app / Projeto pessoal",
+        "category": "Web app / Em desenvolvimento",
         "description": "Um universo de descobertas, com busca rápida e informações organizadas em cada detalhe.",
-        "tapeLabel": "REACT + TYPESCRIPT",
+        "tapeLabel": "WEB APP / EM DESENVOLVIMENTO",
         "technologies": ["React", "TypeScript", "API REST"],
         "features": [
           {
@@ -511,7 +522,9 @@
       "stereo": "HI-FI ESTÉREO",
       "preview": "{{title}} / prévia",
       "standby": "has video / espera"
-    }
+    },
+    "inDevelopment": "EM DESENVOLVIMENTO",
+    "comingSoon": "Em breve"
   },
   "contact": {
     "eyebrow": "04 / CONTATO",
@@ -532,23 +545,6 @@
     "socials": "Redes sociais"
   },
   "previews": {
-    "store": {
-      "nav": "Início　 Loja　 Coleções　 Sobre",
-      "eyebrow": "STREETWEAR / CULTURA / EXPRESSÃO",
-      "title1": "VISTA",
-      "title2": "O QUE",
-      "title3": "TE MOVE.",
-      "description": "Roupas que conectam",
-      "descriptionEnd": "estilo, cultura e propósito.",
-      "collection": "Ver coleção ↗",
-      "latest": "Novidades",
-      "all": "Ver todos →",
-      "tokyo": "Camiseta Tokyo",
-      "fuji": "Camiseta Fuji",
-      "kuro": "Camiseta Kuro",
-      "sakura": "Camiseta Sakura",
-      "edition": "LANÇAMENTO / 2026"
-    },
     "pokedex": {
       "tagline": "EXPLORE. DESCUBRA. COLECIONE.",
       "eyebrow": "SEU GUIA DE DESCOBERTAS",

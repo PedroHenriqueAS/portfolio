@@ -453,25 +453,36 @@
       "formlab": {
         "title": "FormLab",
         "category": "E-commerce / Personal project",
-        "description": "Fashion, identity and a shopping experience with care in every detail.",
-        "tapeLabel": "STREETWEAR / WEB",
-        "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+        "description": "A T-shirt store with Japanese-inspired prints: filterable catalog, product page with gallery and shopping cart.",
+        "tapeLabel": "E-COMMERCE / NEXT.JS",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Zustand",
+          "shadcn/ui",
+          "Zod"
+        ],
         "features": [
           {
-            "title": "Catalog and filters",
-            "description": "Find products with ease."
+            "title": "Filterable catalog",
+            "description": "Categories, size, color, price and sorting."
+          },
+          {
+            "title": "Shopping cart",
+            "description": "Size selection and global state with Zustand."
           },
           {
             "title": "Responsive interface",
-            "description": "One experience across all devices."
+            "description": "Built for desktop and mobile."
           }
         ]
       },
       "pokedex": {
         "title": "Pokédex",
-        "category": "Web app / Personal project",
+        "category": "Web app / In development",
         "description": "A world of discoveries, with fast search and carefully organized information.",
-        "tapeLabel": "REACT + TYPESCRIPT",
+        "tapeLabel": "WEB APP / IN DEVELOPMENT",
         "technologies": ["React", "TypeScript", "REST API"],
         "features": [
           {
@@ -511,7 +522,9 @@
       "stereo": "HI-FI STEREO",
       "preview": "{{title}} / preview",
       "standby": "has video / standby"
-    }
+    },
+    "inDevelopment": "IN DEVELOPMENT",
+    "comingSoon": "Coming soon"
   },
   "contact": {
     "eyebrow": "04 / CONTACT",
@@ -532,23 +545,6 @@
     "socials": "Social profiles"
   },
   "previews": {
-    "store": {
-      "nav": "Home　 Shop　 Collections　 About",
-      "eyebrow": "STREETWEAR / CULTURE / EXPRESSION",
-      "title1": "WEAR",
-      "title2": "WHAT",
-      "title3": "MOVES YOU.",
-      "description": "Clothes that connect",
-      "descriptionEnd": "style, culture and purpose.",
-      "collection": "View collection ↗",
-      "latest": "New arrivals",
-      "all": "View all →",
-      "tokyo": "Tokyo T-shirt",
-      "fuji": "Fuji T-shirt",
-      "kuro": "Kuro T-shirt",
-      "sakura": "Sakura T-shirt",
-      "edition": "NEW DROP / 2026"
-    },
     "pokedex": {
       "tagline": "EXPLORE. DISCOVER. COLLECT.",
       "eyebrow": "YOUR DISCOVERY GUIDE",
