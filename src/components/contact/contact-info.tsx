@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ArrowUpRight, FileText, Mail } from "lucide-react";
+import { ArrowUpRight, Check, FileText, Mail } from "lucide-react";
 import { instrumentSerif, inter } from "@/utils/fonts";
 import { CONTACT_DATA } from "./contact-data";
 import ContactLink from "./contact-link";
@@ -10,8 +11,33 @@ import SocialIcon from "./social-icon";
 import styles from "./contact.module.css";
 
 export default function ContactInfo() {
-  const { t } = useTranslation();
-  const { email, resumeUrl, linkedinUrl, githubUrl } = CONTACT_DATA;
+  const { t, i18n } = useTranslation();
+  const { email, resume, linkedinUrl, githubUrl } = CONTACT_DATA;
+  const resumeFile = resume[i18n.resolvedLanguage === "en" ? "en" : "pt"];
+  const mailto = `mailto:${email}?subject=${encodeURIComponent(t("contact.emailSubject"))}`;
+  const [copied, setCopied] = useState(false);
+  const copiedTimer = useRef<number | null>(null);
+
+  useEffect(
+    () => () => {
+      if (copiedTimer.current !== null)
+        window.clearTimeout(copiedTimer.current);
+    },
+    [],
+  );
+
+  function copyEmail() {
+    navigator.clipboard
+      ?.writeText(email)
+      .then(() => {
+        setCopied(true);
+        if (copiedTimer.current !== null) {
+          window.clearTimeout(copiedTimer.current);
+        }
+        copiedTimer.current = window.setTimeout(() => setCopied(false), 2500);
+      })
+      .catch(() => {});
+  }
 
   return (
     <div className={styles.info}>
@@ -27,25 +53,28 @@ export default function ContactInfo() {
       </p>
       <div className={styles.actions}>
         <ContactLink
-          href={email ? `mailto:${email}` : ""}
-          label={t("contact.email")}
+          href={mailto}
+          label={t("contact.emailLabel", { email })}
           className={styles.primaryAction}
+          onClick={copyEmail}
         >
-          <Mail aria-hidden="true" />
-          <span>{t("contact.email")}</span>
+          {copied ? <Check aria-hidden="true" /> : <Mail aria-hidden="true" />}
+          <span>{copied ? t("contact.emailCopied") : t("contact.email")}</span>
           <ArrowUpRight className={styles.arrow} aria-hidden="true" />
         </ContactLink>
         <ContactLink
-          href={resumeUrl}
+          href={resumeFile.url}
           label={t("contact.resume")}
           className={styles.secondaryAction}
-          external={/^https?:\/\//.test(resumeUrl)}
-          download={resumeUrl.startsWith("/") ? "Pedro-HAS-CV.pdf" : undefined}
+          download={resumeFile.fileName}
         >
           <FileText aria-hidden="true" />
           <span>{t("contact.resume")}</span>
         </ContactLink>
       </div>
+      <p className="sr-only" aria-live="polite">
+        {copied ? t("contact.emailCopied") : ""}
+      </p>
       <div
         className={styles.socials}
         role="group"

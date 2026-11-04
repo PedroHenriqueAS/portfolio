@@ -542,7 +542,10 @@
     "descriptionEnd": "an opportunity? Let's talk.",
     "email": "Send an email",
     "resume": "Download résumé",
-    "socials": "Social profiles"
+    "socials": "Social profiles",
+    "emailSubject": "Contact from your portfolio",
+    "emailLabel": "Send an email to {{email}}",
+    "emailCopied": "Email copied!"
   },
   "previews": {
     "pokedex": {

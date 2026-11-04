@@ -542,7 +542,10 @@
     "descriptionEnd": "uma oportunidade? Vamos conversar.",
     "email": "Enviar e-mail",
     "resume": "Baixar currículo",
-    "socials": "Redes sociais"
+    "socials": "Redes sociais",
+    "emailSubject": "Contato pelo portfólio",
+    "emailLabel": "Enviar e-mail para {{email}}",
+    "emailCopied": "E-mail copiado!"
   },
   "previews": {
     "pokedex": {

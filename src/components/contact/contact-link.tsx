@@ -2,7 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 
 interface ContactLinkProps {
   href: string;
@@ -11,6 +11,7 @@ interface ContactLinkProps {
   label: string;
   external?: boolean;
   download?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 export default function ContactLink({
@@ -20,6 +21,7 @@ export default function ContactLink({
   label,
   external,
   download,
+  onClick,
 }: ContactLinkProps) {
   const { t } = useTranslation();
   if (!href) {
@@ -43,6 +45,7 @@ export default function ContactLink({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       download={download}
+      onClick={onClick}
       aria-label={external ? t("common.externalLabel", { label }) : label}
     >
       {children}
